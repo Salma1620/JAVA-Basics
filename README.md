@@ -9,6 +9,7 @@
     - [Encapsulation](#Encapsulation)
     - [Inheritance](#Inheritance)
     - [Polymorphism](#Polymorphism)
+    - [Abstraction](#Abstraction)
 
 
 # History
@@ -251,6 +252,26 @@ public class Main {
 }
 ```
 
+## Abstraction
+> It's the process of hiding the complex implementation details and showing only the essential features of the object.<br/>
+> This is achieved in Java through abstract classes and interfaces.
+
+### Abstract Classes
+> - classes that cannot be instantiated on their own and are meant to be extended by other classes.<br/>
+> - They are used to provide a common definition for a group of related classes and to establish a base class with common methods and fields, some of which may be abstract (i.e.,   c 
+    methods that do not have an implementation).<br/>
+
+#### Abstract Methods 
+> - Abstract classes can contain abstract methods, which are methods without an implementation. Subclasses must provide an implementation for these methods.<br/>
+  > Syntax: ```java abstract void methodName(); ```<br/>
 
 
+> - Abstract classes can also contain concrete (non-abstract) methods with an implementation. These methods can be used by subclasses directly.<br/>
+> - **Constructors:** <br/>
+>   Abstract classes can have constructors, which can be called from constructors of subclasses.<br/>
+> - **Fields:** <br/>
+>   Abstract classes can have fields (variables), including static and instance fields, and these can be used by subclasses.<br/>
+> **Example of static field :**  ```java static int totalVehicles = 0; ```
+> - **Inheritance:** <br/>
+>   A concrete subclass that extends an abstract class must provide implementations for all abstract methods in the abstract class.<br/>
 
