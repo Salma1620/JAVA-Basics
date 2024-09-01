@@ -8,6 +8,7 @@
   - [Four Pillars of Object-Oriented Programming in Java](#Four-Pillars-Of-POO)
     - [Encapsulation](#Encapsulation)
     - [Inheritance](#Inheritance)
+    - [Polymorphism](#Polymorphism)
 
 
 # History
@@ -135,7 +136,7 @@ public class Main {
 > - **Single Inheritance:** <br/>
   > Java supports single inheritance, meaning a class can only extend one superclass. However, a class can implement multiple interfaces, which provides a way to achieve multiple            inheritance.<br/>
 > - **Constructor Inheritance:** <br/>
-  > A subclass does not inherit the constructors of its superclass, but it can call a superclass's constructor using super() in its own constructor.
+  > A subclass does not inherit the constructors of its superclass, but it can call a superclass's constructor using `super()` in its own constructor.
 
 **Example:** Constructor Inheritance
 ```java
@@ -196,5 +197,60 @@ public class Dog extends Animal {
 Dog myDog = new Dog();
 myDog.makeSound(); //output : Animal makes a sound
 ```
+
+## Polymorphism
+> - It allows objects to be treated as instances of their parent class rather than their actual class. <br/>
+
+### Compile-Time Polymorphism (Static Polymorphism)
+> **Method Overloading:** multiple methods in the same class have the same name but different parameter lists.<br/<
+
+### Run-Time Polymorphism (Dynamic Polymorphism)
+
+> **Method Overriding:** a subclass provides a specific implementation of a method that is already defined in its superclass.<br/>
+> The method to be called is determined at runtime based on the object's actual class.
+
+**Example:**  Run-Time Polymorphism
+
+```java
+// Superclass
+class Animal {
+    void makeSound() {
+        System.out.println("Some sound");
+    }
+}
+```
+```java
+// Subclass
+class Dog extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Bark");
+    }
+}
+```
+```java
+// Another subclass
+class Cat extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Meow");
+    }
+}
+```
+```java
+public class Main {
+    public static void main(String[] args) {
+        Animal myAnimal;
+
+        myAnimal = new Dog();
+        myAnimal.makeSound();  // Output: Bark
+
+        myAnimal = new Cat();
+        myAnimal.makeSound();  // Output: Meow
+    }
+}
+```
+
+
 
 
