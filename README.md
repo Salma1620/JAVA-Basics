@@ -38,7 +38,7 @@
 
 
 
-# Object Oriented Programming Language
+# Object Oriented Programming Language (POO)
 > Object-Oriented Programming is a programming paradigm centered around the concept of "objects," which are instances of "classes."
 > These objects are designed to represent real-world entities and can encapsulate data and behavior (données et methodes).
 
