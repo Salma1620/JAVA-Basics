@@ -2,7 +2,7 @@
 
 # Table of contents
 - [History](#History)
-- [Java jvm-jre-jdk](#java-jdk-jre-jvm)
+- [Java jvm-jre-jdk](#Java-JDK-JRE-JVM)
 - [Object Oriented Programming Language (POO)](#Object-Oriented-Programming-Language)
   - [Classes and Objects](#Classes-And-Objects)
   - [Four Pillars of Object-Oriented Programming in Java](#Four-Pillars-of-Object-Oriented-Programming-in-Java)
@@ -15,7 +15,7 @@
 > Java is a high-level, class-based, object-oriented programming language that was first released by Sun Microsystems in 1995. <br/>
 > The company Oracle then acquired Sun Microsystems in 2009, which explains why this language now belongs to Oracle.
 
-# Java jvm jre jdk
+# Java JDK JRE JVM
 
 ## jvm (Java Virtual Machine)
 > the core of the Java programming language. It is responsible for executing Java bytecode, which is the intermediate code generated after compiling a Java program.<br/>
@@ -38,7 +38,7 @@
 
 
 
-# Object Oriented Programming Language (POO)
+# Object Oriented Programming Language
 > Object-Oriented Programming is a programming paradigm centered around the concept of "objects," which are instances of "classes."
 > These objects are designed to represent real-world entities and can encapsulate data and behavior (données et methodes).
 
