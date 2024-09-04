@@ -3,6 +3,7 @@
 # Table of contents
 - [History](#History)
 - [Java jvm-jre-jdk](#Java-JDK-JRE-JVM)
+- [How to run java code](#How-to-run-java-code)
 - [Object Oriented Programming Language (POO)](#Object-Oriented-Programming-Language)
   - [Classes and Objects](#Classes-And-Objects)
     - [Classes](#Classes)
@@ -15,6 +16,7 @@
     - [Inheritance](#Inheritance)
     - [Polymorphism](#Polymorphism)
     - [Abstraction](#Abstraction)
+  - [Interfaces](#Interfaces)
 
 
 # History
@@ -42,6 +44,25 @@
   > - Development Tools: These include the Java compiler (javac), debugger (jdb), archiver (jar), and other tools necessary for writing and testing Java code.
   > - Additional Libraries: The JDK includes additional libraries required for development, such as those for GUI development (AWT, Swing) and networking.
 
+## How to run java code
+**1 - Navigate to the Directory Containing Your Java File** <br/>
+**2 - Compile the Java Code** <br/>
+> - Before running your Java program, you need to compile it. <br/>
+> - The Java compiler (javac) converts your Java source code (.java file) into bytecode (.class file), which can be run on the 
+    Java Virtual Machine (JVM). <br/>
+> - the JDK is used to compile your .java file into a .class file (bytecode). <br/>
+
+```java javac HelloWorld.java ``` <br/>
+
+**3 - Run the Java Program** <br/>
+> - Once compiled, you can run your program using the Java interpreter (java command). <br/>
+> - You don't need to include the .class extension when running the file. <br/>
+> - The JVM interprets the bytecode and interacts with the operating system and hardware to execute your program. <br/>
+> - The JVM ensures that your Java program runs consistently across different platforms.<br/>
+> - The JRE provides the necessary libraries and environment to support the execution of your program <br/>
+> - While the JVM does the actual work of running it. <br/>
+
+```java java HelloWorld ``` <br/>
 
 
 # Object Oriented Programming Language
@@ -404,4 +425,75 @@ public class Main {
 > **Example of static field :**  ```java static int totalVehicles = 0; ```
 > - **Inheritance:** <br/>
 >   A concrete subclass that extends an abstract class must provide implementations for all abstract methods in the abstract class.<br/>
+
+# Interfaces
+> - Interface is a reference type, similar to a class, that can contain only abstract methods (methods without a body) and constants (public, static, and final variables).<br/> 
+> - It is a way to define a contract that other classes can implement.<br/>
+> - Interfaces are used to specify a set of methods that implementing classes must provide, without dictating how those methods should be implemented. <br/>
+
+> **Abstract Methods:** <br/>
+> - Interfaces can contain abstract methods, which are methods without a body (i.e., they are declared but not implemented). <br/>
+> - Classes that implement the interface must provide concrete implementations of these methods. <br/>
+```java
+public interface Animal {
+    void sound();  // Abstract method
+    void eat();    // Abstract method
+}
+```
+
+> **No Instance Variables:** <br/>
+> - Interfaces cannot have instance variables (like: ```java private String brand; ``` ).<br/>
+> - They can only have constants, which are public, static, and final by default. <br/>
+```java
+public interface Constants {
+    // A constant variable in an interface
+    int MAX_SPEED = 120;  // This is implicitly public, static, and final
+}
+```
+
+> **Multiple Inheritance:**<br/>
+> - A class in Java can implement multiple interfaces. This allows a class to inherit the abstract methods from multiple interfaces, providing a form of multiple inheritance. <br/>
+
+> **Polymorphism:** <br/>
+> - Interfaces enable polymorphism. You can write methods that accept interface types as parameters, allowing for flexibility and the ability to pass objects of any class that 
+    implements the interface.<br/>
+
+```java
+public class Dog implements Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("The dog barks");
+    }
+}
+
+// Cat.java
+public class Cat implements Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("The cat meows");
+    }
+}
+```
+
+```java
+public class Main {
+
+    // Method that takes an Animal interface type
+    public static void animalSound(Animal animal) {
+        animal.makeSound();  // Polymorphic call
+    }
+
+    public static void main(String[] args) {
+        // Create instances of Dog and Cat
+        Animal myDog = new Dog();
+        Animal myCat = new Cat();
+
+        // Use polymorphism to call the method
+        animalSound(myDog);  // Output: The dog barks
+        animalSound(myCat);  // Output: The cat meows
+    }
+}
+```
+
+
 
