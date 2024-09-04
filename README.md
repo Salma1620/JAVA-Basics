@@ -5,6 +5,11 @@
 - [Java jvm-jre-jdk](#Java-JDK-JRE-JVM)
 - [Object Oriented Programming Language (POO)](#Object-Oriented-Programming-Language)
   - [Classes and Objects](#Classes-And-Objects)
+    - [Classes](#Classes)
+      - [Access Modifiers in Java](#Access-Modifiers-in-Java)
+      - [Method Overloading](#Method-Overloading)
+      - [Keyword : Final](#Final)
+      - [Keyword : Static](#Static)
   - [Four Pillars of Object-Oriented Programming in Java](#Four-Pillars-of-Object-Oriented-Programming-in-Java)
     - [Encapsulation](#Encapsulation)
     - [Inheritance](#Inheritance)
@@ -71,14 +76,20 @@ public class Person {
 
 }
 ```
-#### Method Overloading :
+#### Access Modifiers in Java
+> - **public :** it can be accessed from anywhere in the program. <br/>
+> - **private :**  it cannot be accessed directly from any other class, even subclasses. it's accessible just y the class <br/>
+> - **protected :** allows the attribute or method to be accessible within its own package and by subclasses in other packages. <br/>
+> - If no access modifier is specified, the field or method is package-private by default, meaning it is accessible only by classes in the same package. <br/>
+
+#### Method Overloading 
   > It's a feature in Java where multiple methods in the same class can have the same name but different parameter lists (i.e., different types, number, or order of parameters).<br/>
   > Purpose: It allows the same method to perform different tasks based on the type and number of arguments passed to it.<br/>
   > Key Characteristics:<br/>
     > - **Same Method Name**: All overloaded methods share the same name.<br/>
     > - **Different Parameters**: The methods must differ in their parameter lists.<br/>
     > - **Compile-Time Polymorphism**: Method overloading is an example of compile-time polymorphism, meaning the method to be called is determined at compile time.<br/>
-    
+
 **Example:** Method Overloading
 ```java
 class Calculator {
@@ -98,6 +109,125 @@ class Calculator {
     }
 }
 ```
+
+#### Keyword : Final <br/>
+**final with Variables** <br/>
+> When a variable is declared as final, its value cannot be changed once it has been assigned. This effectively makes the variable a constant. <br/>
+> - Final Primitive Variables: Once assigned, the value cannot be changed. <br/> 
+> - Final Reference Variables: The reference cannot point to a different object after assignment, but the object's internal state can still be modified. <br/>
+```java
+public class FinalExample {
+    final int MAX_VALUE = 100;  // Constant
+
+    public void someMethod() {
+        MAX_VALUE = 200;  // Error: Cannot assign a value to final variable 'MAX_VALUE'
+    }
+}
+```
+```java
+public class FinalReferenceExample {
+    final StringBuilder sb = new StringBuilder("Hello");
+
+    public void modify() {
+        sb.append(" World");  // Allowed, modifying the object
+        sb = new StringBuilder("New Object");  // Error: Cannot reassign a final reference
+    }
+}
+```
+**final with Methods**
+> When a method is declared as final, it cannot be overridden by subclasses. This is useful when you want to prevent a specific method from being changed by subclasses. <br/>
+
+```java
+public class ParentClass {
+    public final void show() {
+        System.out.println("This is a final method.");
+    }
+}
+
+public class ChildClass extends ParentClass {
+    @Override
+    public void show() {  // Error: Cannot override the final method from ParentClass
+        System.out.println("Attempting to override.");
+    }
+}
+```
+**final with classes**
+> When a class is declared as final, it cannot be subclassed. This is useful when you want to prevent others from extending your class. <br/>
+
+#### Keyword : Static <br/>
+> indicate that a particular member (variable, method, or nested class) belongs to the class itself, rather than to instances of the class. <br/>
+> This means that static members are shared among all instances of the class and can be accessed without creating an object of the class.
+
+**static Variables**
+> A static variable is shared among all instances of a class. Instead of each object having its own copy of the variable, there is only one copy, <br/>
+```java static int count = 0;``` <br/>
+
+**static Methods** <br/>
+> A static methods can be called without creating an object of the class. <br/>
+> Static methods can only directly access static variables and other static methods. <br/>
+```java
+public class MathOperations {
+    public static int add(int a, int b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        int sum = MathOperations.add(5, 10);  // No need to create an object
+        System.out.println("Sum: " + sum);  // Output: Sum: 15
+    }
+}
+```
+
+**static Blocks** <br/>
+> A static block is used to initialize static variables or perform static initialization when the class is first loaded. <br/>
+> Static blocks are executed only once, when the class is loaded into memory. <br/>
+
+```java
+public class StaticBlockExample {
+    static int value;
+
+    static {
+        value = 42;
+        System.out.println("Static block executed.");
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Value: " + value);  // Output: Value: 42
+    }
+}
+```
+
+**static Classes (Nested Static Classes)** <br/>
+> A static nested class is a class that is defined within another class (known as the outer class) and is declared with the static keyword. <br/>
+> Unlike non-static inner classes, a static nested class does not automatically have access to the instance variables or methods of the outer class. It can only access the static members (variables and methods) of the outer class. <br/>
+> Because it doesn't require an instance of the outer class, a static nested class can be instantiated on its own, using the outer class's name. <br/>
+> Static nested classes are often used to group classes that are only used in one place, increasing encapsulation. <br/>
+> They are also useful when the nested class doesn't need to access the instance members of the outer class. <br/<
+
+```java
+public class OuterClass {
+    static int outerStaticVar = 10;  // Static variable in the outer class
+    int outerInstanceVar = 20;       // Instance variable in the outer class
+
+    // Static nested class
+    static class NestedStaticClass {
+        void display() {
+            // Accessing the static variable of the outer class
+            System.out.println("Outer static var: " + outerStaticVar);
+
+            // Cannot access the instance variable of the outer class
+            // System.out.println("Outer instance var: " + outerInstanceVar); // This would cause an error
+        }
+    }
+
+    public static void main(String[] args) {
+        // Instantiating the static nested class
+        OuterClass.NestedStaticClass nested = new OuterClass.NestedStaticClass();
+        nested.display();  // Output: Outer static var: 10
+    }
+}
+```
+
 
 ### Objects
 > It's an instance of a class.<br/>
