@@ -1,10 +1,11 @@
-# JAVA-Basics
+# JAVA-Basics 2
 
 # Table of contents
 - [History](#History)
 - [Java jvm-jre-jdk](#Java-JDK-JRE-JVM)
 - [How to run java code](#How-to-run-java-code)
 - [Basics](#Basics)
+  - [Packages In Java](#Packages-In-Java)
   - [Arrays In Java](#Arrays-In-Java)
 - [Object Oriented Programming Language (POO)](#Object-Oriented-Programming-Language)
   - [Classes and Objects](#Classes-And-Objects)
@@ -65,18 +66,7 @@
 > - While the JVM does the actual work of running it. <br/>
 
 ```java java HelloWorld ``` <br/>
-## Basics
-### Arrays In Java
-> Declaration :
-```Java
-int intArray[];
-   OR
-int[] intArray;
-```
-> Allocating memory to the array
-```Java
-intArray = new int[20];
-```
+
 # Object Oriented Programming Language
 > Object-Oriented Programming is a programming paradigm centered around the concept of "objects," which are instances of "classes."
 > These objects are designed to represent real-world entities and can encapsulate data and behavior (données et methodes).
@@ -362,6 +352,63 @@ Dog myDog = new Dog();
 myDog.makeSound(); //output : Animal makes a sound
 ```
 
+### Super keyword
+> In Java, the super keyword is used to refer to members (methods, constructors, and instance variables) of the superclass (parent class) from within a subclass (child class). <br/>
+> It allows the subclass to access and override features from its parent class while retaining the ability to refer to the original versions.
+**Using super to Call a Superclass Method**
+```Java
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+    
+    void callSuperMethod() {
+        super.sound();  // Calls the sound() method from Animal
+    }
+}
+```
+**Using super() to Call a Superclass Constructor**
+```Java
+class Animal {
+    Animal() {
+        System.out.println("Animal constructor called");
+    }
+    
+    Animal(String type) {
+        System.out.println("Animal is a " + type);
+    }
+}
+
+class Dog extends Animal {
+    Dog() {
+        super("Dog");  // Calls the Animal(String) constructor
+        System.out.println("Dog constructor called");
+    }
+}
+```
+
+**Using super to Access Superclass Fields**
+```Java
+class Animal {
+    String name = "Animal";
+}
+
+class Dog extends Animal {
+    String name = "Dog";
+    
+    void printNames() {
+        System.out.println(name);        // Prints: Dog (child class variable)
+        System.out.println(super.name);  // Prints: Animal (superclass variable)
+    }
+}
+```
 ## Polymorphism
 > - It allows objects to be treated as instances of their parent class rather than their actual class. <br/>
 
