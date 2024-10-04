@@ -4,6 +4,8 @@
 - [History](#History)
 - [Java jvm-jre-jdk](#Java-JDK-JRE-JVM)
 - [How to run java code](#How-to-run-java-code)
+- [Basics](#Basics)
+  - [Arrays In Java](#Arrays-In-Java)
 - [Object Oriented Programming Language (POO)](#Object-Oriented-Programming-Language)
   - [Classes and Objects](#Classes-And-Objects)
     - [Classes](#Classes)
@@ -63,8 +65,18 @@
 > - While the JVM does the actual work of running it. <br/>
 
 ```java java HelloWorld ``` <br/>
-
-
+## Basics
+### Arrays In Java
+> Declaration :
+```Java
+int intArray[];
+   OR
+int[] intArray;
+```
+> Allocating memory to the array
+```Java
+intArray = new int[20];
+```
 # Object Oriented Programming Language
 > Object-Oriented Programming is a programming paradigm centered around the concept of "objects," which are instances of "classes."
 > These objects are designed to represent real-world entities and can encapsulate data and behavior (données et methodes).
