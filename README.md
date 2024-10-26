@@ -12,8 +12,9 @@
     - [Classes](#Classes)
       - [Access Modifiers in Java](#Access-Modifiers-in-Java)
       - [Method Overloading](#Method-Overloading)
-      - [Keyword : Final](#Final)
-      - [Keyword : Static](#Static)
+      - [Keyword : Final](#Keyword-:-Final)
+      - [Keyword : Static](#Keyword-:-Static)
+      - [Keyword : Super](#Keyword-:-Super)
   - [Four Pillars of Object-Oriented Programming in Java](#Four-Pillars-of-Object-Oriented-Programming-in-Java)
     - [Encapsulation](#Encapsulation)
     - [Inheritance](#Inheritance)
@@ -264,6 +265,32 @@ public class OuterClass {
 }
 ```
 
+#### Keyword : Super
+> - The super keyword refers to superclass (parent) objects.<br/>
+> - It is used to call superclass methods, and to access the superclass constructor.<br/>
+> - The most common use of the super keyword is to eliminate the confusion between superclasses and subclasses that have methods with the same name.<br/>
+**exampleof using super**<br/>
+```java
+class Animal { // Superclass (parent)
+  public void animalSound() {
+    System.out.println("The animal makes a sound");
+  }
+}
+
+class Dog extends Animal { // Subclass (child)
+  public void animalSound() {
+    super.animalSound(); // Call the superclass method
+    System.out.println("The dog says: bow wow");
+  }
+}
+
+public class Main {
+  public static void main(String args[]) {
+    Animal myDog = new Dog(); // Create a Dog object
+    myDog.animalSound(); // Call the method on the Dog object
+  }
+}
+```
 
 ### Objects
 > It's an instance of a class.<br/>
