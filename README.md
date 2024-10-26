@@ -12,9 +12,9 @@
     - [Classes](#Classes)
       - [Access Modifiers in Java](#Access-Modifiers-in-Java)
       - [Method Overloading](#Method-Overloading)
-      - [Keyword : Final](#Keyword-:-Final)
-      - [Keyword : Static](#Keyword-:-Static)
-      - [Keyword : Super](#Keyword-:-Super)
+      - [Keyword:Final](#Keyword:Final)
+      - [Keyword:Static](#Keyword:Static)
+      - [Keyword:Super](#Keyword:Super)
   - [Four Pillars of Object-Oriented Programming in Java](#Four-Pillars-of-Object-Oriented-Programming-in-Java)
     - [Encapsulation](#Encapsulation)
     - [Inheritance](#Inheritance)
@@ -147,7 +147,7 @@ class Calculator {
 }
 ```
 
-#### Keyword : Final <br/>
+#### Keyword:Final <br/>
 **final with Variables** <br/>
 > When a variable is declared as final, its value cannot be changed once it has been assigned. This effectively makes the variable a constant. <br/>
 > - Final Primitive Variables: Once assigned, the value cannot be changed. <br/> 
@@ -191,7 +191,7 @@ public class ChildClass extends ParentClass {
 **final with classes**
 > When a class is declared as final, it cannot be subclassed. This is useful when you want to prevent others from extending your class. <br/>
 
-#### Keyword : Static <br/>
+#### Keyword:Static <br/>
 > indicate that a particular member (variable, method, or nested class) belongs to the class itself, rather than to instances of the class. <br/>
 > This means that static members are shared among all instances of the class and can be accessed without creating an object of the class.
 
@@ -265,7 +265,7 @@ public class OuterClass {
 }
 ```
 
-#### Keyword : Super
+#### Keyword:Super
 > - The super keyword refers to superclass (parent) objects.<br/>
 > - It is used to call superclass methods, and to access the superclass constructor.<br/>
 > - The most common use of the super keyword is to eliminate the confusion between superclasses and subclasses that have methods with the same name.<br/>
