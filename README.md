@@ -66,6 +66,19 @@
 > - While the JVM does the actual work of running it. <br/>
 
 ```java java HelloWorld ``` <br/>
+# Basics
+## Packages In Java
+> - A package in Java is a namespace that organizes a set of related classes and interfaces.<br/>
+> - Conceptually you can think of packages as being similar to different folders on your computer.<br/>
+
+## Arrays In Java
+> array is a container object that holds a fixed number of values of a single type.<br/>
+
+The declaration of an array in Java is as follows:
+```java
+int[] myIntArray = new int[10]; // declares an array of integers
+String[] myStringArray = new String[50]; // declares an array of strings
+```
 
 # Object Oriented Programming Language
 > Object-Oriented Programming is a programming paradigm centered around the concept of "objects," which are instances of "classes."
