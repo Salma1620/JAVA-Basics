@@ -27,6 +27,7 @@
   - [Java Finally keyword](#Java-Finally-keyword)
   - [The throw keyword](#The-throw-keyword)
   - [The Throws keyword](#The-Throws-keyword)
+- [Steing APIs](#String-APIs)
 
 
 # History
@@ -671,3 +672,4 @@ static void checkAge(int age) throws ArithmeticException {
 ```
 
 
+# String APIs
