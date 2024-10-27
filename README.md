@@ -20,13 +20,13 @@
     - [Inheritance](#Inheritance)
     - [Polymorphism](#Polymorphism)
     - [Abstraction](#Abstraction)
-  - [Interfaces](#Interfaces)
-  - [Exception Handling and Assertions](#Exception-Handling-and-Assertions)
-    - [Types of Exception](#Types-of-Exception)
-    - [Java try and catch](#Java-try-and-catch)
-    - [Java Finally keyword](#Java-Finally-keyword)
-    - [The throw keyword](#The-throw-keyword)
-    - [The Throws keyword](#The-Throws-keyword)
+- [Interfaces](#Interfaces)
+- [Exception Handling and Assertions](#Exception-Handling-and-Assertions)
+  - [Types of Exception](#Types-of-Exception)
+  - [Java try and catch](#Java-try-and-catch)
+  - [Java Finally keyword](#Java-Finally-keyword)
+  - [The throw keyword](#The-throw-keyword)
+  - [The Throws keyword](#The-Throws-keyword)
 
 
 # History
