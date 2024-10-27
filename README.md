@@ -21,6 +21,12 @@
     - [Polymorphism](#Polymorphism)
     - [Abstraction](#Abstraction)
   - [Interfaces](#Interfaces)
+  - [Exception Handling and Assertions](#Exception-Handling-and-Assertions)
+    - [Types of Exception](#Types-of-Exception)
+    - [Java try and catch](#Java-try-and-catch)
+    - [Java Finally keyword](#Java-Finally-keyword)
+    - [The throw keyword](#The-throw-keyword)
+    - [The Throws keyword](#The-Throws-keyword)
 
 
 # History
@@ -594,5 +600,74 @@ public class Main {
 }
 ```
 
+# Exception Handling and Assertions
+> When executing Java code, different errors can occur, Java will throw an exception<br/>
+
+## Types of Exception
+
+### Built-in Exceptions
+> Built-in exceptions are the exceptions that are available in Java libraries. These exceptions are suitable to explain certain error situations.<br/>
+> - `Checked Exceptions` : Checked exceptions are called `compile-time exceptions` because these exceptions are checked at compile-time by the compiler.<br/>
+> - `Unchecked Exceptions` : The unchecked exceptions are just opposite to the checked exceptions. they are a `runtime exceptions` The compiler will not check these exceptions at compile time. In simple words, if a program throws an unchecked exception, and even if we didn’t handle or declare it, the program would not give a compilation error.<br/>
+
+### User-Defined Exceptions
+> Sometimes, the built-in exceptions in Java are not able to describe a certain situation.<br/>
+> In such cases, users can also create exceptions, which are called ‘user-defined Exceptions’. <br/>
+
+
+## Java try and catch
+> - The `try` statement allows you to define a block of code to be tested for errors while it is being executed.<br/>
+> - The `catch` statement allows you to define a block of code to be executed, if an error occurs in the try block<br/>
+
+## Java Finally keyword
+> The finally statement lets you execute code, after try...catch, regardless of the result<br/>
+
+**Example of try catch blok**<br/>
+```java
+public class Main {
+  public static void main(String[] args) {
+    try {
+      int[] myNumbers = {1, 2, 3};
+      System.out.println(myNumbers[10]);
+    } catch (Exception e) {
+      System.out.println("Something went wrong.");
+    } finally {
+      System.out.println("The 'try catch' is finished.");
+    }
+  }
+}
+```
+
+## The throw keyword
+> The throw statement allows you to create a custom error.<br/>
+```java
+public class Main {
+  static void checkAge(int age) {
+    if (age < 18) {
+      throw new ArithmeticException("Access denied - You must be at least 18 years old.");
+    }
+    else {
+      System.out.println("Access granted - You are old enough!");
+    }
+  }
+
+  public static void main(String[] args) {
+    checkAge(15); // Set age to 15 (which is below 18...)
+  }
+}
+```
+## The Throws keyword
+> - Used to indicate what exception type may be thrown by a method<br/>
+> - It Can declare multiple exceptions<br/>
+> - throws is followed by a class and used with the method signature<br/>
+```java
+static void checkAge(int age) throws ArithmeticException {
+  if (age < 18) {
+    throw new ArithmeticException("Access denied - You must be at least 18 years old.");
+  }
+  else {
+    System.out.println("Access granted - You are old enough!");
+  }
+```
 
 
