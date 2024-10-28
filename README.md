@@ -27,7 +27,7 @@
   - [Java Finally keyword](#Java-Finally-keyword)
   - [The throw keyword](#The-throw-keyword)
   - [The Throws keyword](#The-Throws-keyword)
-- [Steing APIs](#String-APIs)
+- [String APIs](#String-APIs)
 
 
 # History
@@ -673,3 +673,109 @@ static void checkAge(int age) throws ArithmeticException {
 
 
 # String APIs
+> - In Java, string is an object that represents a sequence of characters.<br/>
+> - The `java.lang.String` class is used to create a string object.<br/>
+> - There are two ways to create String object: <br/> `By string literal` OR `By new keyword` <br/>
+> - Strings are `Immutable`: Strings in Java are immutable, meaning once created, their values cannot be changed. Any modification to a string creates a new string.<br/>
+> - `String Pool`: Java maintains a special memory area called the "string pool" for string literals to optimize memory use and improve performance.<br/>
+
+## Creating Strings
+### Creating String object with String Literal
+> - Each time you create a string literal, the JVM checks the "string constant pool" first.<br/>
+> - If the string already exists in the pool, a reference to the pooled instance is returned.<br/>
+> - If the string doesn't exist in the pool, a new string instance is created and placed in the pool.<br/>
+```java
+String s1="Welcome";  
+String s2="Welcome";//It doesn't create a new instance  
+```
+> - In the above example, only one object will be created.<br/>
+> - Firstly, JVM will not find any string object with the value "Welcome" in string constant pool that is why it will create a new object.<br/>
+> - After that it will find the string with the value "Welcome" in the pool, it will not create a new object but will return the reference to the same instance.<br/>
+
+### Creating String object with new keyword
+> -This method creates a new String object in the heap memory, even if an identical string already exists in the string pool. <br/>
+
+```java
+ String str1 = "Hello";                // Stored in string pool
+ String str2 = new String("Hello");    // New object in the heap
+ String str3 = new String("Hello");    // Another new object in the heap
+        
+ System.out.println(str1 == str2);     // false, different memory locations
+ System.out.println(str2 == str3);     // false, different objects in the heap
+ System.out.println(str1.equals(str2)); // true, contents are identical
+```
+
+## Java String class methods
+#### Length
+```java 
+int length = str.length();
+```
+
+#### Character at a Specific Index
+```java 
+char ch = str.charAt(0);
+```
+
+#### Extracting characters frm index to another
+```java 
+String sub = str.substring(1, 4); // Extracts characters from index 1 to 3
+```
+
+#### Concatenation
+```java 
+String newStr = str.concat(" World");
+// or simply using + operator
+String newStr = str + " World";
+```
+
+#### Equals and Comparison
+```java
+boolean isEqual = str.equals("Hello"); // checks exact match
+boolean isEqualIgnoreCase = str.equalsIgnoreCase("hello"); // ignores case
+```
+
+#### Find Character or Substring Position
+```java
+int index = str.indexOf('e');  // Finds index of first occurrence of 'e'
+int lastIndex = str.lastIndexOf("Hello");
+```
+
+#### Replacing Characters or Substrings
+```java
+String replacedStr = str.replace('l', 'p'); // replaces 'l' with 'p'
+String replacedStrAll = str.replaceAll("Hello", "Hi");
+```
+
+#### Uppercase and Lowercase
+```java
+String upper = str.toUpperCase();
+String lower = str.toLowerCase();
+```
+
+#### Trimming Whitespace
+```java
+String trimmedStr = str.trim();
+```
+
+#### Empty check 
+```java
+boolean isEmpty = str.isEmpty();
+boolean isBlank = str.isBlank();  // Checks if it's empty or only whitespace
+```
+
+#### Starts and Ends With
+```java
+boolean startsWith = str.startsWith("Hello");
+boolean endsWith = str.endsWith("World");
+```
+
+#### Join multiple strings with a delimiter
+```java
+String joined = String.join(", ", "A", "B", "C"); // "A, B, C"
+```
+
+#### Value of Other Data Types
+```java
+String fromInt = String.valueOf(42);      // Converts int to string
+String fromChar = String.valueOf('A');    // Converts char to string
+```
