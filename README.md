@@ -28,7 +28,11 @@
   - [The throw keyword](#The-throw-keyword)
   - [The Throws keyword](#The-Throws-keyword)
 - [String APIs](#String-APIs)
-
+  - [Creating Strings](#Creating-Strings)
+  - [Java String class methods](#Java-String-class-methods)
+- [Collections](#Collections)
+  - [List](#List)
+    - [ArrayList](#ArrayList)
 
 # History
 > Java is a high-level, class-based, object-oriented programming language that was first released by Sun Microsystems in 1995. <br/>
@@ -779,3 +783,90 @@ String joined = String.join(", ", "A", "B", "C"); // "A, B, C"
 String fromInt = String.valueOf(42);      // Converts int to string
 String fromChar = String.valueOf('A');    // Converts char to string
 ```
+
+## StringBuilder
+> - StringBuilder in Java is a mutable sequence of characters, meaning it can be modified without creating new objects.<br/>
+> - It’s part of the `java.lang` package and is particularly useful when you need to perform many modifications on a string (e.g., appending, inserting, deleting characters).<br/>
+> - StringBuilder is not synchronized, so it should only be used in single-threaded environments.<br/>
+
+### Creating a StrinBuilder
+```java
+StringBuilder sb = new StringBuilder();             // Empty StringBuilder
+StringBuilder sb2 = new StringBuilder("Hello");     // Initialize with "Hello"
+StringBuilder sb3 = new StringBuilder(50);          // Initial capacity of 50 characters
+```
+
+## StringBuffer
+> - StringBuffer is a class in Java used to create mutable (modifiable) strings, similar to StringBuilder.<br/>
+> - The key difference is that StringBuffer is thread-safe because all its methods are synchronized, making it suitable for use in multithreaded environments.<br/>
+```java
+StringBuffer sb = new StringBuffer();               // Empty buffer
+StringBuffer sb2 = new StringBuffer("Hello");       // Initialize with "Hello"
+StringBuffer sb3 = new StringBuffer(50);            // Buffer with initial capacity of 50 characters
+```
+
+
+# Collections
+> - The Java Collections Framework (JCF) is part of the java.util package and includes several interfaces, classes, and methods to manage and manipulate collections of data.<br/>
+> - Collections are widely used because they simplify and streamline working with groups of objects.<br/>
+> - It has subinterfaces like `List`, `Set`, and `Queue`<br/>
+
+## List
+
+### Commonly Used List Implementations
+
+#### ArrayList
+> - Uses a resizable array to store elements.<br/>
+> - Allows fast random access (get/set) due to array-based structure.<br/>
+> - Slower at insertions and deletions in the middle, as elements need to be shifted.<br/>
+> - Not synchronized, meaning it's not thread-safe.<br/>
+```java
+// Creating an ArrayList of String type
+ArrayList<String> fruits = new ArrayList<>();
+
+// Adding elements to the ArrayList
+fruits.add("Apple");
+fruits.add("Banana");
+fruits.add("Cherry");
+
+// Adding an element at a specific index
+fruits.add(1, "Mango");  // Now, "Mango" is at index 1
+
+// Accessing an element by index
+String firstFruit = fruits.get(0);
+System.out.println("First fruit: " + firstFruit);  // Output: Apple
+
+// Updating an element at a specific index
+fruits.set(2, "Orange");  // Changes "Banana" to "Orange" at index 2
+
+// Removing an element by index
+fruits.remove(3);  // Removes the element at index 3 ("Cherry")
+
+// Checking if a specific element is in the ArrayList
+boolean hasMango = fruits.contains("Mango");
+System.out.println("Does the list contain Mango? " + hasMango);  // Output: true
+
+// Getting the size of the ArrayList
+int size = fruits.size();
+System.out.println("Size of the list: " + size);  // Output: 3
+
+// Iterating over the ArrayList and printing each element
+System.out.println("Fruits in the list:");
+for (String fruit : fruits) {
+  System.out.println(fruit);
+}
+
+// Clearing all elements in the ArrayList
+fruits.clear();
+```
+
+
+
+
+
+
+
+
+
+
+
