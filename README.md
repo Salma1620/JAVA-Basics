@@ -15,6 +15,8 @@
       - [Keyword Final](#Keyword-Final)
       - [Keyword Static](#Keyword-Static)
       - [Keyword Super](#Keyword-Super)
+      - [Class variable](#Class-variable)
+      - [Instance variable](#Instance-variable)
   - [Four Pillars of Object-Oriented Programming in Java](#Four-Pillars-of-Object-Oriented-Programming-in-Java)
     - [Encapsulation](#Encapsulation)
     - [Inheritance](#Inheritance)
@@ -33,6 +35,7 @@
 - [Collections](#Collections)
   - [List](#List)
     - [ArrayList](#ArrayList)
+    - [LinkedlList](#LinkedList)
 
 # History
 > Java is a high-level, class-based, object-oriented programming language that was first released by Sun Microsystems in 1995. <br/>
@@ -302,7 +305,12 @@ public class Main {
   }
 }
 ```
-
+#### Class variable
+> - Class Variable (static variable) can be declared anywhere at the class level using the keyword static.<br/>
+> - These variables can be shared by all class members.<br/>
+#### Instance variable
+> - Class variable can have distinct values among several objects.<br/>
+> - The contents of an instance variable are completely independent of one object instance from another because they are related to a specific object instance of the class.<br/>
 ### Objects
 > It's an instance of a class.<br/>
 > It represents a specific entity in the program, with its own set of attributes and behaviors defined by the class.<br/>
@@ -812,7 +820,9 @@ StringBuffer sb3 = new StringBuffer(50);            // Buffer with initial capac
 > - It has subinterfaces like `List`, `Set`, and `Queue`<br/>
 
 ## List
-
+> - List is an interface that represents an ordered collection (also known as a sequence) of elements.<br/>
+> - It is part of the Java Collections Framework and provides a way to store and manipulate a sequence of objects.<br/>
+> - The List interface provides various methods for adding, removing, and accessing elements.<br/>
 ### Commonly Used List Implementations
 
 #### ArrayList
@@ -820,6 +830,7 @@ StringBuffer sb3 = new StringBuffer(50);            // Buffer with initial capac
 > - Allows fast random access (get/set) due to array-based structure.<br/>
 > - Slower at insertions and deletions in the middle, as elements need to be shifted.<br/>
 > - Not synchronized, meaning it's not thread-safe.<br/>
+
 ```java
 // Creating an ArrayList of String type
 ArrayList<String> fruits = new ArrayList<>();
@@ -860,12 +871,50 @@ for (String fruit : fruits) {
 fruits.clear();
 ```
 
+#### LinkedList
+> - It is an implementation of the List and Deque interfaces.<br/>
+> - Doubly Linked Structure: The LinkedList is implemented as a doubly linked list, meaning each element (node) contains a link to both the previous and the next node.<br/>
+> - Sequential Access: Unlike arrays or ArrayList, accessing a specific element in a LinkedList requires traversing the list from the beginning or the end.<br/>
+> - Fast Insertion and Removal: LinkedList provides efficient insertion and deletion when adding or removing elements from the beginning, end, or middle of the list.<br/>
+> - It is not synchronised that means it is not Thread safe.<br/>
+> - We can create a synchronised LinkedList using Collections.synchronizedList() method.<br/>
 
+```java
+LinkedList<Integer> list = new LinkedList<>();
+// Adding elements
+list.add("A");
+list.addFirst("Start");
+list.addLast("End");
+list.add(3, "Salma");
 
+// Accessing elements
+System.out.println("First element: " + list.getFirst());
+System.out.println("Last element: " + list.getLast());
 
+// Removing elements
+list.removeFirst();
+list.removeLast();
+//from LinkedList to Array
+Integer[] numbers = new Integer[numbersList.size()];		
+numbers = numbersList.toArray(numbers);
+```
 
+#### Vector
+> - Thread Safety: All methods of Vector are synchronized, making it safe for use in multi-threaded applications.<br/>
+> - Indexed Access: You can access elements by their index.<br/>
 
+```java
+Vector<String> fruits = new Vector<>();
+// Adding elements to the Vector
+fruits.add("Apple");
+fruits.add(1, "Grapes"); // Insert "Grapes" at index 1
 
+// Accessing elements
+System.out.println("First fruit: " + fruits.get(0));
+
+// Removing an element
+fruits.remove("Apple");
+```
 
 
 
