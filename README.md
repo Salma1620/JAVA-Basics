@@ -95,6 +95,12 @@
 ## Packages In Java
 > - A package in Java is a namespace that organizes a set of related classes and interfaces.<br/>
 > - Conceptually you can think of packages as being similar to different folders on your computer.<br/>
+> - It is a group of related types of classes, interfaces, etc providing access to protection and namespace management.<br/>
+> - Packages are used in Java in order to prevent naming conflicts, control access, and make searching/locating and usage of classes, interfaces, etc easier.<br/>
+> - Packages avoid name clashes.<br/>
+> - The Package provides easier access control.<br/>
+> - It is easier to locate the related classes.<br/>
+> - Types of packages are there in Java: **User-defined packages** and **Build In packages**.<br/>
 
 ## Arrays In Java
 > array is a container object that holds a fixed number of values of a single type.<br/>
