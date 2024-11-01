@@ -34,8 +34,11 @@
   - [Java String class methods](#Java-String-class-methods)
 - [Collections](#Collections)
   - [List](#List)
-    - [ArrayList](#ArrayList)
-    - [LinkedlList](#LinkedList)
+    - [Commonly Used List Implementations](#Commonly-Used-List-Implementations)
+      - [ArrayList](#ArrayList)
+      - [LinkedlList](#LinkedList)
+      - [Vector](#Vector)
+    - [When to use each one](#When-to-use-each-one)
 
 # History
 > Java is a high-level, class-based, object-oriented programming language that was first released by Sun Microsystems in 1995. <br/>
@@ -915,6 +918,60 @@ System.out.println("First fruit: " + fruits.get(0));
 // Removing an element
 fruits.remove("Apple");
 ```
+
+
+### When to use each one
+#### ArrayList
+> - Allows fast random access using indices (O(1) complexity for get and set operations).<br/>
+> - Slower for insertion and deletion, especially in the middle of the list, as elements may need to be shifted (O(n) complexity).<br/>
+> - Not synchronized, so it’s not thread-safe but faster in single-threaded contexts.<br/>
+
+When to Use: <br/>
+
+> - You primarily need fast access to elements by index.<br/>
+> - Your list operations are mostly get and set.<br/>
+> - Thread safety is not required.<br/>
+> - Examples: Maintaining a list of items, where you often retrieve elements but rarely modify the list.<br/>
+
+#### LinkedList
+> - Implemented as a doubly linked list.<br/>
+> - Insertion and deletion at both ends are fast (O(1) complexity at head and tail).<br/>
+> - Slower random access (O(n) complexity) as it requires traversal from the beginning.<br/>
+> - Not synchronized, so it’s not thread-safe.<br/>
+
+When to Use:
+
+> - You need to frequently add or remove elements at the beginning, end, or middle of the list.<br/>
+> - Accessing elements by index is not a frequent operation.<br/>
+> - Thread safety is not a concern.<br/>
+> - Examples: Implementing queues or deques, where elements are frequently added or removed from both ends.<br/>
+
+#### Vector
+> -Backed by a dynamically resizing array.<br/>
+> Similar to ArrayList in terms of fast access and slower insertion/deletion in the middle.<br/>
+> Synchronized by default, which makes it thread-safe but can lead to performance bottlenecks due to synchronization overhead.<br/>
+
+When to Use:
+
+> - You need a thread-safe list for a multi-threaded environment.<br/>
+> - Alternatives like Collections.synchronizedList(new ArrayList<>()) or CopyOnWriteArrayList are unsuitable.<br/>
+> - Examples: Legacy applications requiring thread safety, or when migrating older codebases that rely on Vector.<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
