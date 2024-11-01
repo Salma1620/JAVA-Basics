@@ -38,6 +38,7 @@
       - [ArrayList](#ArrayList)
       - [LinkedlList](#LinkedList)
       - [Vector](#Vector)
+        - [Stack](#Stack)
     - [When to use each one](#When-to-use-each-one)
 
 # History
@@ -918,7 +919,28 @@ System.out.println("First fruit: " + fruits.get(0));
 // Removing an element
 fruits.remove("Apple");
 ```
+##### Stack
+> - Stack is a subclass of Vector. This means Stack inherits all the properties and methods of Vector, including those for manipulating elements and managing capacity.<br/>
+> - data structure that follows the Last-In-First-Out (LIFO) principle, where the last element added is the first to be removed.<br/>
+> - This structure is useful for scenarios where you need to process items in reverse order of their arrival.<br/>
 
+```java
+Stack<Integer> stack = new Stack<>();
+// Push elements onto the stack
+stack.push(10);
+stack.push(20);
+stack.push(30);
+
+// Peek at the top element
+System.out.println("Top element is: " + stack.peek()); // Output: 30
+
+// Pop elements from the stack
+System.out.println("Popped: " + stack.pop()); // Output: 30
+System.out.println("Popped: " + stack.pop()); // Output: 20
+
+// Check if the stack is empty
+System.out.println("Is the stack empty? " + stack.isEmpty()); // Output: false
+```
 
 ### When to use each one
 #### ArrayList
@@ -958,8 +980,13 @@ When to Use:
 > - Examples: Legacy applications requiring thread safety, or when migrating older codebases that rely on Vector.<br/>
 
 
+## Queue
+Queue interface is a subtype of the Collection interface and represents a collection of elements in a specific order. 
+The Queue is used to insert elements at the end of the queue and removes from the beginning of the queue. It follows FIFO concept.
+The Queue interface is implemented by several classes in Java, including LinkedList, ArrayDeque, and PriorityQueue.
 
-
+###  
+#### PriorityQueue
 
 
 
