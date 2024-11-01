@@ -32,6 +32,7 @@
 - [String APIs](#String-APIs)
   - [Creating Strings](#Creating-Strings)
   - [Java String class methods](#Java-String-class-methods)
+- [Iterators](#Iterators)
 - [Collections](#Collections)
   - [List](#List)
     - [Commonly Used List Implementations](#Commonly-Used-List-Implementations)
@@ -41,9 +42,10 @@
         - [Stack](#Stack)
     - [When to use each one](#When-to-use-each-one)
   - [Queue](#Queue)
-    - [PriorityQueue](#PriorityQueue)
-    - [LinkedList](#LinkedList)
-    - [PriorityBlockingQueue](#PriorityBlockingQueue)
+    - [Commonly Used List Implementations](#Commonly-Used-List-Implementations)
+      - [PriorityQueue](#PriorityQueue)
+      - [LinkedList](#LinkedList)
+      - [PriorityBlockingQueue](#PriorityBlockingQueue)
     - [When to use each one](#When-to-use-each-one)
 # History
 > Java is a high-level, class-based, object-oriented programming language that was first released by Sun Microsystems in 1995. <br/>
@@ -820,7 +822,34 @@ StringBuffer sb = new StringBuffer();               // Empty buffer
 StringBuffer sb2 = new StringBuffer("Hello");       // Initialize with "Hello"
 StringBuffer sb3 = new StringBuffer(50);            // Buffer with initial capacity of 50 characters
 ```
+# Iterators
+> - There are three cursors in Java : **Iterator**, **Enumeration**, and **ListIterator** <br/>
 
+## Iterator
+> - Iterators in Java are used in the **Collection framework** to retrieve elements one by one.<br/>
+> - It is a universal iterator as we can apply it to any Collection object.<br/>
+> - By using Iterator, we can perform both read and remove operations.<br/>
+> - It is an improved version of Enumeration with the additional functionality of removing an element.<br/>
+> - The iterator is the only cursor available for the entire collection framework.<br/>
+> - An iterator object can be created by calling the **iterator()** method present in the Collection interface.<br/>
+
+### Syntax
+Iterator itr = c.iterator();
+
+### Methods
+**hasNext()**: Returns true if the iteration has more elements.<br/>
+**next()**: Returns the next element in the iteration. It throws NoSuchElementException if no more element is present.<br/>
+**remove()**: Removes the next element in the iteration. This method can be called only once per call to next().<br/>
+
+## Enumeration
+> - It is an interface used to get elements of legacy collections(Vector, Hashtable).<br/>
+> - Enumeration is the first iterator present from JDK 1.0, rests are included in JDK 1.2 with more functionality.<br/>
+> - Enumerations are also used to specify the input streams to a SequenceInputStream.<br/>
+> - We can create an Enumeration object by calling **elements()** method of the vector class on any vector object <br/>
+
+### Syntax
+
+### Methods
 
 # Collections
 > - The Java Collections Framework (JCF) is part of the java.util package and includes several interfaces, classes, and methods to manage and manipulate collections of data.<br/>
@@ -1071,5 +1100,4 @@ System.out.println(pbq.peek());
 > - Use PriorityQueue in single-threaded contexts for tasks with varying priorities.<br/>
 > - Use PriorityBlockingQueue in multi-threaded applications where priority ordering and safe concurrent access are required.<br/>
 
-
-
+### Deque
