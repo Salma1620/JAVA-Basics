@@ -40,7 +40,11 @@
       - [Vector](#Vector)
         - [Stack](#Stack)
     - [When to use each one](#When-to-use-each-one)
-
+  - [Queue](#Queue)
+    - [PriorityQueue](#PriorityQueue)
+    - [LinkedList](#LinkedList)
+    - [PriorityBlockingQueue](#PriorityBlockingQueue)
+    - [When to use each one](#When-to-use-each-one)
 # History
 > Java is a high-level, class-based, object-oriented programming language that was first released by Sun Microsystems in 1995. <br/>
 > The company Oracle then acquired Sun Microsystems in 2009, which explains why this language now belongs to Oracle.
@@ -827,6 +831,7 @@ StringBuffer sb3 = new StringBuffer(50);            // Buffer with initial capac
 > - List is an interface that represents an ordered collection (also known as a sequence) of elements.<br/>
 > - It is part of the Java Collections Framework and provides a way to store and manipulate a sequence of objects.<br/>
 > - The List interface provides various methods for adding, removing, and accessing elements.<br/>
+
 ### Commonly Used List Implementations
 
 #### ArrayList
@@ -981,25 +986,90 @@ When to Use:
 
 
 ## Queue
-Queue interface is a subtype of the Collection interface and represents a collection of elements in a specific order. 
-The Queue is used to insert elements at the end of the queue and removes from the beginning of the queue. It follows FIFO concept.
-The Queue interface is implemented by several classes in Java, including LinkedList, ArrayDeque, and PriorityQueue.
+> - Queue interface is a subtype of the Collection interface and represents a collection of elements in a specific order.<br/>
+> - The Queue is used to insert elements at the end of the queue and removes from the beginning of the queue. It follows FIFO concept.<br/>
+> - The Queue interface is implemented by several classes in Java, including LinkedList, ArrayDeque, and PriorityQueue.<br/>
+> - **add(element)** : Adds an element to the rear of the queue. If the queue is full, it throws an exception.<br/>
+> - **offer(element)** : Adds an element to the rear of the queue. If the queue is full, it returns false.<br/>
+> - **remove()** : Removes and returns the element at the front of the queue. If the queue is empty, it throws an exception., we can add the index of element to remove. <br/>
+> - **poll()** : Removes and returns the element at the front of the queue. If the queue is empty, it returns null.<br/>
+> - **element()** : Returns the element at the front of the queue without removing it. If the queue is empty, it throws an exception.<br/>
+> - **peek()** : Returns the element at the front of the queue without removing it. If the queue is empty, it returns null.<br/>
+> - **size()** : This method is used to return the size of the queue.<br/>
 
-###  
+### Commonly Used List Implementations
+
 #### PriorityQueue
+> - PriorityQueue orders elements based on priority <br/>
+> - **Natural Ordering** : If elements are Comparable, PriorityQueue will order them in their natural order (e.g., integers in ascending order).
+> - **Custom Comparator** : You can specify a custom Comparator at the time of PriorityQueue creation to define custom ordering, such as descending or based on a specific field in a custom class.<br/>
+> - It’s based on a heap data structure, making insertion and removal efficient <br/>
 
+```java
+//Creating a PriorityQueue
+PriorityQueue<Integer> queue = new PriorityQueue<>(); // Natural ordering (ascending)
+//Adding elements to the queue
+queue.add(30);
+queue.add(10);
+queue.add(20);
+//It will order them (10 then 20 then 30) automatiqly
+while (!queue.isEmpty()) {
+  System.out.println(queue.poll()); // Output: 10, 20, 30
+}
+//return and remove the firt element
+System.out.println(queue.poll());
+//return without removing it
+System.out.println(queue.peek());
+//Removing element
+queue.remove(10);
+//Iterator
+Iterator iterator = pq.iterator();
+while (iterator.hasNext()) {
+  System.out.print(iterator.next() + " ");
+}
+```
 
+#### LinkedList
 
+> - With a Queue, you generally interact with elements only at the head (for removal) or the tail (for addition) without accessing elements by index.<br/>
+> - LinkedList is not thread-safe.<br/>
 
+```java
+Queue<String> queue = new LinkedList<>();
+queue.offer("first");
+queue.offer("second");
+queue.offer("third");
+System.out.println(queue.poll());  // Output: first (FIFO)
+System.out.println(queue.peek());  // Output: second
+```
 
+#### PriorityBlockingQueue
 
+> - The elements are ordered based on their priority, with the smallest (or highest priority) elements appearing at the head of the queue.<br/>
+> - You can specify a custom ordering by passing a Comparator when creating the queue.<br/>
+> - PriorityBlockingQueue is technically **unbounded**, meaning it does not have a maximum size, unlike other blocking queues like ArrayBlockingQueue.<br/>
+> - PriorityBlockingQueue is designed for concurrent access, so multiple threads can safely add or remove elements from the queue without explicit synchronization.<br/>
 
+```java
+// blocking queue
+Queue<Integer> pbq = new PriorityBlockingQueue<Integer>();
+// Adding items to the pbq
+pbq.add(10);
+pbq.add(20);
+pbq.add(15);
+// Printing the top element
+System.out.println(pbq.peek());
+// Printing the top element and removing it
+System.out.println(pbq.poll());
+// Printing the top element again
+System.out.println(pbq.peek());
+```
 
+### When to use each one
 
-
-
-
-
+> - Use LinkedList when simple queue or list behavior is needed without concurrent access.<br/>
+> - Use PriorityQueue in single-threaded contexts for tasks with varying priorities.<br/>
+> - Use PriorityBlockingQueue in multi-threaded applications where priority ordering and safe concurrent access are required.<br/>
 
 
 
