@@ -48,11 +48,11 @@
       - [PriorityBlockingQueue](#PriorityBlockingQueue)
     - [When to use each one](#When-to-use-each-one)
   - [Set](#Set)
-  - [Commonly Used List Implementations](#Commonly-Used-List-Implementations)
-    - [HashSet](#HashSet)
-    - [LinkedHashSet](#LinkedHashSet)
-    - [SortedSet](#SortedSet)
-      - [TreeSet](#TreeSet)
+    - [Commonly Used List Implementations](#Commonly-Used-List-Implementations)
+      - [HashSet](#HashSet)
+      - [LinkedHashSet](#LinkedHashSet)
+      - [SortedSet](#SortedSet)
+        - [TreeSet](#TreeSet)
     - [When to use each one](#When-to-use-each-one)
 # History
 > Java is a high-level, class-based, object-oriented programming language that was first released by Sun Microsystems in 1995. <br/>
