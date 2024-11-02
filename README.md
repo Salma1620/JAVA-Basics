@@ -47,6 +47,13 @@
       - [LinkedList](#LinkedList)
       - [PriorityBlockingQueue](#PriorityBlockingQueue)
     - [When to use each one](#When-to-use-each-one)
+  - [Set](#Set)
+  - [Commonly Used List Implementations](#Commonly-Used-List-Implementations)
+    - [HashSet](#HashSet)
+    - [LinkedHashSet](#LinkedHashSet)
+    - [SortedSet](#SortedSet)
+      - [TreeSet](#TreeSet)
+    - [When to use each one](#When-to-use-each-one)
 # History
 > Java is a high-level, class-based, object-oriented programming language that was first released by Sun Microsystems in 1995. <br/>
 > The company Oracle then acquired Sun Microsystems in 2009, which explains why this language now belongs to Oracle.
@@ -1107,3 +1114,108 @@ System.out.println(pbq.peek());
 > - Use PriorityBlockingQueue in multi-threaded applications where priority ordering and safe concurrent access are required.<br/>
 
 ### Deque
+
+
+
+
+## Set
+> - The Set Interface is present in java.util package and extends the Collection interface.<br/>
+> - It is an unordered collection of objects in which duplicate values cannot be stored.<br/>
+> - This interface contains the methods inherited from the Collection interface and adds a feature that restricts the insertion of the duplicate elements.<br/>
+> - There are two interfaces that extend the set implementation namely .<br/>
+> - Commun implementations of Set: `HashSet`, `LinkedHashSet`.<br/>
+> - Interface that extends from Set: `SortedSet`, and the implementation of SortedSet: `TreeSet`.<br/>
+
+
+### Commonly Used List Implementations
+
+#### HashSet 
+> - The objects are inserted based on their hashcode.<br/>
+> - This class also allows the insertion of NULL elements.<br/> 
+
+```java
+// Creating object of Set of type String
+Set<String> h = new HashSet<String>();
+// Adding elements into the HashSet
+h.add("India");
+h.add("Australia");
+h.add("South Africa");
+// Adding the duplicate element
+h.add("India");
+// Displaying the HashSet
+System.out.println(h);
+// --> [South Africa, Australia, India]
+// Removing items from HashSet
+h.remove("Australia");
+// Iterating over hash set items
+Iterator<String> i = h.iterator();
+// It holds true till there is a single element remaining in the object
+while (i.hasNext())
+  System.out.println(i.next());
+}
+```
+
+#### LinkedHashSet
+> - No Duplicates: Like other Set implementations, LinkedHashSet does not allow duplicate elements.<br/>
+> - Insertion Order: Maintains the order in which elements are added to the set.<br/>
+> - Faster Access: Has similar performance to HashSet for most operations, with O(1) average complexity for adding, removing, and checking for elements.<br/>
+
+```java
+Set<String> lh = new LinkedHashSet<String>();
+// Adding elements into the LinkedHashSet
+lh.add("India");
+lh.add("Australia");
+lh.add("South Africa");
+// Adding the duplicate element
+lh.add("India");
+// Displaying the LinkedHashSet
+System.out.println(lh);
+// --> [India, Australia, South Africa]
+// Removing items from LinkedHashSet
+// using remove()
+lh.remove("Australia");
+// Iterating over linked hash set items
+Iterator<String> i = lh.iterator();
+while (i.hasNext())  System.out.println(i.next());
+```
+
+#### SortedSet
+> - The SortedSet interface is present in java.util package extends the Set interface present in the collection framework.<br/>
+> - This interface contains the methods inherited from the Set interface and adds a feature that stores all the elements in this interface to be stored in a sorted manner (ascending order).<br/>
+> - the implementation of SortedSet: `TreeSet`.<br/>
+
+##### TreeList
+```java
+Set<String> ts = new TreeSet<String>();
+// Adding elements into the TreeSet
+ts.add("India");
+ts.add("Australia");
+ts.add("South Africa");
+// Adding the duplicate element
+ts.add("India");
+// Displaying the TreeSet
+System.out.println(ts);
+// --> [Australia, India, South Africa]
+// Removing items from TreeSet
+ts.remove("Australia");
+// Iterating over Tree set items
+Iterator<String> i = ts.iterator();
+while (i.hasNext())
+  System.out.println(i.next());
+}
+```
+
+### When to use each one
+> - HashSet: when you need a list with unique values and with a hashcode order.<br/>
+> - LinkeHashSet: when you need a list with unique values and wiht the same order that inserted in.<br/>
+> - TreeSet: when you need a list with unique value and an order (ascending/ descending).<br/>
+
+
+
+
+
+
+
+
+
+
