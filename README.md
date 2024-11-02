@@ -228,7 +228,7 @@ public class ChildClass extends ParentClass {
 **final with classes**
 > When a class is declared as final, it cannot be subclassed. This is useful when you want to prevent others from extending your class. <br/>
 
-#### Keyword Static <br/>
+#### Keyword Static
 > indicate that a particular member (variable, method, or nested class) belongs to the class itself, rather than to instances of the class. <br/>
 > This means that static members are shared among all instances of the class and can be accessed without creating an object of the class.
 
