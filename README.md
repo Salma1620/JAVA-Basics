@@ -58,6 +58,12 @@
       - [SortedSet](#SortedSet)
         - [TreeSet](#TreeSet)
     - [When to use each one](#When-to-use-each-one)
+  - [Map](#Map)
+  - [Threads](#Threads)
+    - [The Concept Of Multitasking](#The-Concept-Of-Multitasking)
+      - [Process-Based Multitasking (Multiprocessing)](#Process-Based-Multitasking-(Multiprocessing))
+      - [thread-Based Multitasking (Multithreading)](#thread-Based-Multitasking-(Multithreading))
+        - [Life Cycle Of Thread](#Life-Cycle-Of-Thread)
 # History
 > Java is a high-level, class-based, object-oriented programming language that was first released by Sun Microsystems in 1995. <br/>
 > The company Oracle then acquired Sun Microsystems in 2009, which explains why this language now belongs to Oracle.
@@ -1214,6 +1220,59 @@ while (i.hasNext())
 > - LinkeHashSet: when you need a list with unique values and wiht the same order that inserted in.<br/>
 > - TreeSet: when you need a list with unique value and an order (ascending/ descending).<br/>
 
+
+## Map
+
+
+
+# Threads
+## The Concept Of Multitasking
+> - To help users Operating System accommodates users the privilege of multitasking, where users can perform multiple actions simultaneously on the machine.<br/>
+> - This Multitasking can be enabled in two ways: `Process-Based Multitasking` and `Thread-Based Multitasking`.<br/>
+
+### Process-Based Multitasking (Multiprocessing)
+> - A process is an independent program in execution with its own memory space and resources, isolated from other processes.<br/>
+> - In this type of Multitasking, processes are heavyweight and each process was allocated by a separate memory area.<br/>
+> - And as the process is heavyweight the cost of communication between processes is high and it takes a long time for switching between processes as it involves actions such as loading, saving in registers, updating maps, lists, etc. <br/>
+
+
+### thread-Based Multitasking (Multithreading)
+> - Thread: The smallest unit of execution within a process.<br/>
+> - Each thread has its own execution path but shares resources like memory with other threads in the same process.<br/>
+> - Threads are provided with lightweight nature, and the cost of communication between threads is also low.<br/>
+> - Concurrency: The ability of the program to manage multiple threads at the same time, which can improve performance by allowing tasks to run in parallel.<br/>
+
+#### Life Cycle Of Thread
+
+**1. New State** <br/>
+> - By default, a Thread will be in a new state.<br/> 
+> - In this state, code has not yet been run and the execution process is not yet initiated. <br/>
+
+**2. Active State** <br/>
+> - A Thread that is a new state by default gets transferred to Active state when it invokes the start() method, his Active state contains two sub-states namely: <br/>
+> - **Runnable State:**<br/>
+> - In This State, The Thread is ready to run at any given time and it’s the job of the Thread Scheduler to provide the thread time for the runnable state preserved threads.<br/>
+> - **Running State:**<br/>
+> - When The Thread Receives CPU allocated by Thread Scheduler, it transfers from the “Runnable” state to the “Running” state.<br/>
+> - And after the expiry of its given time slice session, it again moves back to the “Runnable” state and waits for its next time slice.<br/>
+
+**3. Waiting/Blocked State** <br/>
+> - If a Thread is inactive but on a temporary time, then either it is a waiting or blocked state.<br/>
+> - For example, if there are two threads, T1 and T2 where T1 needs to communicate to the camera and the other thread T2 already using a camera to scan then T1 waits until T2 Thread completes its work.<br/>
+> - At this state T1 is parked in waiting for the state, and in another scenario, the user called two Threads T2 and T3 with the same functionality and both had same time slice given by Thread Scheduler then both Threads T1, T2 is in a blocked state.<br/>
+> - When there are multiple threads parked in a Blocked/Waiting state, Thread Scheduler clears Queue by rejecting unwanted Threads and allocating CPU on a priority basis. <br/>
+
+**4. Timed Waiting State** <br/>
+
+> - Sometimes the longer duration of waiting for threads causes starvation.<br/>
+> - If we take an example like there are two threads T1, T2 waiting for CPU and T1 is undergoing a Critical Coding operation and if it does not exist the CPU until its operation gets executed then T2 will be exposed to longer waiting with undetermined certainty.<br/>
+> - In order to avoid this starvation situation, we had Timed Waiting for the state to avoid that kind of scenario as in Timed Waiting, each thread has a time period for which sleep() method is invoked and after the time expires the Threads starts executing its task. <br/>
+
+**5. Terminated State** <br/>
+> - A thread will be in Terminated State, due to the below reasons: <br/>
+> - Termination is achieved by a Thread when it finishes its task Normally.<br/>
+> - Sometimes Threads may be terminated due to unusual events like segmentation faults, exceptions…etc. and such kind of Termination can be called Abnormal Termination.<br/>
+> - A terminated Thread means it is dead and no longer available.<br/>
 
 
 
