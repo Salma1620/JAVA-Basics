@@ -61,6 +61,12 @@
         - [TreeSet](#TreeSet)
     - [When to use each one](#When-to-use-each-one)
   - [Map](#Map)
+    - [Commonly Used List Implementations](#Commonly-Used-List-Implementations)
+      - [HashMap](#HashMap)
+      - [LinkedHashMap](#LinkedHashMap)
+      - [SortedMap](#SortedMap)
+        - [TreeMap](#TreeMap)
+    - [When to use each one](#When-to-use-each-one)
   - [Threads](#Threads)
     - [The Concept Of Multitasking](#The-Concept-Of-Multitasking)
       - [Process-Based Multitasking (Multiprocessing)](#Process-Based-Multitasking-(Multiprocessing))
@@ -1333,7 +1339,8 @@ while (i.hasNext())
 > - The order of a map depends on the specific implementations. For example, `TreeMap` and `LinkedHashMap` have predictable orders, while `HashMap` does not.
 > - There are two interfaces for implementing Map in Java. They are `Map` and `SortedMap`, and three classes: `HashMap`, `TreeMap`, and `LinkedHashMap`.
 
-###  HashMap 
+### Commonly Used List Implementations
+####  HashMap 
 > - This class uses a technique called Hashing.<br/>
 > - Hashing is a technique of converting a large String to a small String that represents the same String.<br/>
 > - A shorter value helps in indexing and faster searches. Let’s see how to create a map object using this class.<br/>
@@ -1351,7 +1358,7 @@ for (Map.Entry<String, Integer> e : map.entrySet())
 System.out.println(e.getKey() + " " + e.getValue());
 ```
 
-### LinkedHashMap
+#### LinkedHashMap
 > - LinkedHashMap is just like HashMap with the additional feature of maintaining an order of elements inserted into it.<br/>
 > - HashMap provided the advantage of quick insertion, search, and deletion but it never maintained the track and order of insertion which the LinkedHashMap provides where the elements can be accessed in their insertion order.<br/>
 
@@ -1367,12 +1374,12 @@ for (Map.Entry<String, Integer> e : map.entrySet())
 System.out.println(e.getKey() + " " + e.getValue());
 ```
 
-## SortedMap
+### SortedMap
 > - SortedMap is an interface that extends Map and guarantees that the map is sorted in ascending order by key.<br/>
 > - `TreeMap` is the most commonly used implementation of SortedMap.<br/>
 
 
-### TreeMap 
+#### TreeMap 
 > - TreeMap automatically sorts entries by their natural ordering (if keys implement Comparable) or by a specified comparator (if one is provided).<br/>
 > - Null Keys: TreeMap does not allow null keys but does allow null values.<br/>
 
