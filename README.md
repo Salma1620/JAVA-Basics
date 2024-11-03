@@ -1323,6 +1323,101 @@ while (i.hasNext())
 
 
 ## Map
+> - Map Interface is present in java.util package represents a mapping between a key and a value.<br/>
+> - Java Map interface is not a subtype of the Collection interface.<br/>
+> - Therefore it behaves a bit differently from the rest of the collection types. A map contains unique keys.<br/>
+> - Maps are perfect to use for key-value association mapping such as dictionaries.<br/>
+> - The maps are used to perform lookups by keys or when someone wants to retrieve and update elements by keys.<br/>
+> - A Map cannot contain duplicate keys and each key can map to at most one value.
+> - Some implementations allow null key and null values like the `HashMap` and `LinkedHashMap`, but some do not like the `TreeMap`.
+> - The order of a map depends on the specific implementations. For example, `TreeMap` and `LinkedHashMap` have predictable orders, while `HashMap` does not.
+> - There are two interfaces for implementing Map in Java. They are `Map` and `SortedMap`, and three classes: `HashMap`, `TreeMap`, and `LinkedHashMap`.
+
+###  HashMap 
+> - This class uses a technique called Hashing.<br/>
+> - Hashing is a technique of converting a large String to a small String that represents the same String.<br/>
+> - A shorter value helps in indexing and faster searches. Let’s see how to create a map object using this class.<br/>
+
+```java
+// Creating an empty HashMap
+Map<String, Integer> map = new HashMap<>();
+// Inserting entries in the Map using put() method
+map.put("vishal", 10);
+map.put("sachin", 30);
+map.put("vaibhav", 20);
+// Iterating over Map
+for (Map.Entry<String, Integer> e : map.entrySet())
+// Printing key-value pairs
+System.out.println(e.getKey() + " " + e.getValue());
+```
+
+### LinkedHashMap
+> - LinkedHashMap is just like HashMap with the additional feature of maintaining an order of elements inserted into it.<br/>
+> - HashMap provided the advantage of quick insertion, search, and deletion but it never maintained the track and order of insertion which the LinkedHashMap provides where the elements can be accessed in their insertion order.<br/>
+
+```java
+Map<String, Integer> map = new LinkedHashMap<>();
+// Inserting pair entries in above Map using put() method
+map.put("vishal", 10);
+map.put("sachin", 30);
+map.put("vaibhav", 20);
+// Iterating over Map
+for (Map.Entry<String, Integer> e : map.entrySet())
+// Printing key-value pairs
+System.out.println(e.getKey() + " " + e.getValue());
+```
+
+## SortedMap
+> - SortedMap is an interface that extends Map and guarantees that the map is sorted in ascending order by key.<br/>
+> - `TreeMap` is the most commonly used implementation of SortedMap.<br/>
+
+
+### TreeMap 
+> - TreeMap automatically sorts entries by their natural ordering (if keys implement Comparable) or by a specified comparator (if one is provided).<br/>
+> - Null Keys: TreeMap does not allow null keys but does allow null values.<br/>
+
+```java
+// Creating a TreeMap which is an implementation of SortedMap
+SortedMap<String, Integer> sortedMap = new TreeMap<>();
+
+// Adding key-value pairs to the TreeMap
+sortedMap.put("Apple", 10);
+sortedMap.put("Banana", 20);
+sortedMap.put("Cherry", 15);
+sortedMap.put("Date", 25);
+sortedMap.put("Fig", 30);
+
+// Displaying the whole map (automatically sorted by key)
+System.out.println("Full SortedMap: " + sortedMap);
+// --> Full SortedMap: {Apple=10, Banana=20, Cherry=15, Date=25, Fig=30}
+
+// Accessing the first and last keys
+System.out.println("First Key: " + sortedMap.firstKey());
+System.out.println("Last Key: " + sortedMap.lastKey());
+// --> First Key: Apple
+       Last Key: Fig
+
+// Getting a head map (all keys less than "Cherry")
+SortedMap<String, Integer> headMap = sortedMap.headMap("Cherry");
+System.out.println("HeadMap (keys less than 'Cherry'): " + headMap);
+// --> HeadMap (keys less than 'Cherry'): {Apple=10, Banana=20}
+
+// Getting a tail map (all keys greater than or equal to "Cherry")
+SortedMap<String, Integer> tailMap = sortedMap.tailMap("Cherry");
+System.out.println("TailMap (keys greater than or equal to 'Cherry'): " + tailMap);
+// --> TailMap (keys greater than or equal to 'Cherry'): {Cherry=15, Date=25, Fig=30}
+
+// Getting a submap (keys from "Banana" to "Fig", excluding "Fig")
+SortedMap<String, Integer> subMap = sortedMap.subMap("Banana", "Fig");
+System.out.println("SubMap (keys from 'Banana' to 'Fig'): " + subMap);
+// --> SubMap (keys from 'Banana' to 'Fig'): {Banana=20, Cherry=15, Date=25}
+```
+
+### When to use each one
+> - HasMap: when you don’t need any ordering of keys or values. Ideal for quick lookups and inserts when the order doesn’t matter. <br/>
+> - LinkedHashMap: when you need predictable iteration order (insertion order or access order.<br/>
+> - TreeMap: when you need a sorted map, either by natural ordering of keys or by a custom comparator. <br>
+
 
 
 
