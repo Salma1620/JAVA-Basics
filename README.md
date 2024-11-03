@@ -48,20 +48,20 @@
         - [Stack](#Stack)
     - [When to use each one](#When-to-use-each-one)
   - [Queue](#Queue)
-    - [Commonly Used List Implementations](#Commonly-Used-List-Implementations)
+    - [Commonly Used Queue Implementations](#Commonly-Used-List-Implementations)
       - [PriorityQueue](#PriorityQueue)
       - [LinkedList](#LinkedList)
       - [PriorityBlockingQueue](#PriorityBlockingQueue)
     - [When to use each one](#When-to-use-each-one)
   - [Set](#Set)
-    - [Commonly Used List Implementations](#Commonly-Used-List-Implementations)
+    - [Commonly Used Set Implementations](#Commonly-Used-List-Implementations)
       - [HashSet](#HashSet)
       - [LinkedHashSet](#LinkedHashSet)
       - [SortedSet](#SortedSet)
         - [TreeSet](#TreeSet)
     - [When to use each one](#When-to-use-each-one)
   - [Map](#Map)
-    - [Commonly Used List Implementations](#Commonly-Used-List-Implementations)
+    - [Commonly Used Map Implementations](#Commonly-Used-List-Implementations)
       - [HashMap](#HashMap)
       - [LinkedHashMap](#LinkedHashMap)
       - [SortedMap](#SortedMap)
@@ -986,6 +986,7 @@ while (ltr.hasNext()) {
 > - Collections are widely used because they simplify and streamline working with groups of objects.<br/>
 > - It has subinterfaces like `List`, `Set`, and `Queue`<br/>
 <img src="https://github.com/user-attachments/assets/5848d904-e656-45ff-8eed-5215184ca8de" >
+
 ## List
 > - List is an interface that represents an ordered collection (also known as a sequence) of elements.<br/>
 > - It is part of the Java Collections Framework and provides a way to store and manipulate a sequence of objects.<br/>
@@ -1156,7 +1157,7 @@ When to Use:
 > - **peek()** : Returns the element at the front of the queue without removing it. If the queue is empty, it returns null.<br/>
 > - **size()** : This method is used to return the size of the queue.<br/>
 
-### Commonly Used List Implementations
+### Commonly Used Queue Implementations
 
 #### PriorityQueue
 > - PriorityQueue orders elements based on priority <br/>
@@ -1244,7 +1245,7 @@ System.out.println(pbq.peek());
 > - Interface that extends from Set: `SortedSet`, and the implementation of SortedSet: `TreeSet`.<br/>
 
 
-### Commonly Used List Implementations
+### Commonly Used Set Implementations
 
 #### HashSet 
 > - The objects are inserted based on their hashcode.<br/>
@@ -1339,7 +1340,7 @@ while (i.hasNext())
 > - The order of a map depends on the specific implementations. For example, `TreeMap` and `LinkedHashMap` have predictable orders, while `HashMap` does not.
 > - There are two interfaces for implementing Map in Java. They are `Map` and `SortedMap`, and three classes: `HashMap`, `TreeMap`, and `LinkedHashMap`.
 
-### Commonly Used List Implementations
+### Commonly Used Map Implementations
 ####  HashMap 
 > - This class uses a technique called Hashing.<br/>
 > - Hashing is a technique of converting a large String to a small String that represents the same String.<br/>
