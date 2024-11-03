@@ -37,6 +37,8 @@
   - [StringBuffer](#StringBuffer)
     - [Creating a StrinBuilder](#Creating-a-StrinBuilder)
 - [Iterators](#Iterators)
+  - [Iterator](#Iterator)
+  - [Enumeration](#Enumeration)
 - [Collections](#Collections)
   - [List](#List)
     - [Commonly Used List Implementations](#Commonly-Used-List-Implementations)
@@ -866,6 +868,22 @@ Iterator itr = c.iterator();
 **next()**: Returns the next element in the iteration. It throws NoSuchElementException if no more element is present.<br/>
 **remove()**: Removes the next element in the iteration. This method can be called only once per call to next().<br/>
 
+### Example
+```java
+// creating a linkedlist
+List<String> cities = new LinkedList<>(); 
+// adding elements to the list
+cities.add("G-1"); 
+cities.add("G-2"); 
+cities.add("G-3"); 
+// creating iterator for the list
+Iterator<String> citiesIterator = cities.iterator();
+// is it a element next to the iterator
+citiesIterator.hasNext();
+// moving the iterator to the next element
+citiesIterator.next();
+```
+
 ## Enumeration
 > - It is an interface used to get elements of legacy collections(Vector, Hashtable).<br/>
 > - Enumeration is the first iterator present from JDK 1.0, rests are included in JDK 1.2 with more functionality.<br/>
@@ -873,8 +891,89 @@ Iterator itr = c.iterator();
 > - We can create an Enumeration object by calling **elements()** method of the vector class on any vector object <br/>
 
 ### Syntax
+```java
+Enumeration e = v.elements();
+```
 
 ### Methods
+**hasMoreElements()**: This method tests if this enumeration contains more elements or not.<br/>
+**nextElement()**: This method returns the next element of this enumeration. It throws NoSuchElementException if no more element is present<br/>
+
+### Example
+```java
+// Creating a vector object
+Vector v = new Vector();
+// Iterating over vector object
+for (int i = 0; i < 10; i++)   v.addElement(i);
+// Printing elements in vector object
+System.out.println(v);
+// At beginning e(cursor) will point to index just before the first element in v
+Enumeration e = v.elements();
+// Checking the next element availability where condition holds true till there is a single element remaining in the List
+while (e.hasMoreElements()) {
+  // Moving cursor to next element
+  int i = (Integer)e.nextElement();
+  // Print above elements in object
+  System.out.print(i + " ");
+}
+```
+
+### limitations of enumeration
+> - Enumeration is for legacy classes(Vector, Hashtable) only. Hence it is not a universal iterator.<br/>
+> - Remove operations can’t be performed using Enumeration.<br/>
+> - Only forward direction iterating is possible.<br/>
+
+## ListIterator
+> - It is only applicable for List collection implemented classes like ArrayList, LinkedList, etc.<br/>
+> - It provides bi-directional iteration.<br/>
+> - ListIterator must be used when we want to enumerate elements of List.<br/>
+> - This cursor has more functionality(methods) than iterator.<br/>
+> - ListIterator object can be created by calling listIterator() method present in the List interface.<br/>
+
+### Syntax
+```java
+ListIterator ltr = l.listIterator();
+```
+
+### Methods
+
+**Forward direction:** <br/>
+> - hasNext(): Returns true if the iteration has more elements<br/>
+> - next(): Same as next() method of Iterator. Returns the next element in the iteration.<br/>
+> - nextIndex(): Returns the next element index or list size if the list iterator is at the end of the list.<br/>
+
+**Backward direction:** <br/>
+> - hasPrevious(): Returns true if the iteration has more elements while traversing backward.<br/>
+> - previous(): Returns the previous element in the iteration and can throw NoSuchElementException if no more element present.<br/>
+> - previousIndex(): Returns the previous element index or -1 if the list iterator is at the beginning of the list.<br/>
+
+**Other metods:** <br/>
+> - remove(): Same as remove() method of Iterator. Removes the next element in the iteration.<br/>
+> - set(Object obj): Replaces the last element returned by next() or previous() with the specified element.<br/>
+> - add(Object obj): Inserts the specified element into the list at the position before the element that would be returned by next(). <br/>
+
+### Example
+```
+// Creating an object of ArrayList class
+ArrayList al = new ArrayList();
+// Iterating over Arraylist object
+for (int i = 0; i < 10; i++)
+// Adding elements to the Arraylist object
+al.add(i);
+// Print and display all elements inside object created above
+System.out.println(al);
+// At beginning ltr(cursor) will point to index just before the first element in al
+ListIterator ltr = al.listIterator();
+// Checking the next element availability
+while (ltr.hasNext()) {
+  //  Moving cursor to next element
+  int i = (Integer)ltr.next();
+  // Getting even elements one by one
+  System.out.print(i + " ");
+}
+```
+
+
 
 # Collections
 > - The Java Collections Framework (JCF) is part of the java.util package and includes several interfaces, classes, and methods to manage and manipulate collections of data.<br/>
