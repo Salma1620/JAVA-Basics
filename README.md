@@ -71,6 +71,7 @@
 
 # Java JDK JRE JVM
 <img src="https://github.com/user-attachments/assets/7e271bd0-0132-4e63-9b6d-cdc64dfda944" >
+
 ## JVM (Java Virtual Machine)
 > - the core of the Java programming language. It is responsible for executing Java bytecode, which is the intermediate code generated after compiling a Java program.<br/>
 > - The JVM makes Java platform-independent by allowing the same Java bytecode to run on any device or operating system that has a compatible JVM.<br/>
