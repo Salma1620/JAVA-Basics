@@ -64,6 +64,7 @@
       - [Process-Based Multitasking (Multiprocessing)](#Process-Based-Multitasking-(Multiprocessing))
       - [thread-Based Multitasking (Multithreading)](#thread-Based-Multitasking-(Multithreading))
         - [Life Cycle Of Thread](#Life-Cycle-Of-Thread)
+  - [JDBC (Java Database Connectivity)](#JDBC (Java Database-Connectivity))
 # History
 > Java is a high-level, class-based, object-oriented programming language that was first released by Sun Microsystems in 1995. <br/>
 > The company Oracle then acquired Sun Microsystems in 2009, which explains why this language now belongs to Oracle.
@@ -1277,9 +1278,27 @@ while (i.hasNext())
 > - A terminated Thread means it is dead and no longer available.<br/>
 
 
+# JDBC (Java Database Connectivity)
+> -JDBC is an API(Application programming interface) used in Java programming to interact with databases.
+> The classes and interfaces of JDBC allow the application to send requests made by users to the specified database.
 
+## Components of JDBC
+1. **JDBC API:**
+> - It provides various methods and interfaces for easy communication with the database.
+> - It provides two packages as follows, which contain the java SE and Java EE platforms to exhibit WORA(write once run anywhere) capabilities.
+> - The java.sql package contains interfaces and classes of JDBC API.
 
+3. **JDBC Driver manager:**
+> - It loads a database-specific driver in an application to establish a connection with a database.
+> - It is used to make a database-specific call to the database to process the user request.
 
+4. **JDBC Test suite:**
+> - It is used to test the operation(such as insertion, deletion, updation) being performed by JDBC Drivers.
+
+6. **JDBC-ODBC Bridge Drivers:**
+> - It connects database drivers to the database.
+> - This bridge translates the JDBC method call to the ODBC function call.
+> - It makes use of the sun.jdbc.odbc package which includes a native library to access ODBC characteristics.
 
 
 
