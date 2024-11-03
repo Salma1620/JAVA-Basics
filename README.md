@@ -46,27 +46,27 @@
       - [LinkedlList](#LinkedList)
       - [Vector](#Vector)
         - [Stack](#Stack)
-    - [When to use each one](#When-to-use-each-one)
+    - [When to use List Implementations](#When-to-use-List-Implementations)
   - [Queue](#Queue)
-    - [Commonly Used Queue Implementations](#Commonly-Used-List-Implementations)
+    - [Commonly Used Queue Implementations](#Commonly-Used-Queue-Implementations)
       - [PriorityQueue](#PriorityQueue)
       - [LinkedList](#LinkedList)
       - [PriorityBlockingQueue](#PriorityBlockingQueue)
-    - [When to use each one](#When-to-use-each-one)
+    - [When to use Queue Implementations](#When-to-use-Queue-Implementations)
   - [Set](#Set)
-    - [Commonly Used Set Implementations](#Commonly-Used-List-Implementations)
+    - [Commonly Used Set Implementations](#Commonly-Used-Set-Implementations)
       - [HashSet](#HashSet)
       - [LinkedHashSet](#LinkedHashSet)
       - [SortedSet](#SortedSet)
         - [TreeSet](#TreeSet)
-    - [When to use each one](#When-to-use-each-one)
+    - [When to use Set Implementations](#When-to-use-Set-Implementations)
   - [Map](#Map)
-    - [Commonly Used Map Implementations](#Commonly-Used-List-Implementations)
+    - [Commonly Used Map Implementations](#Commonly-Used-Map-Implementations)
       - [HashMap](#HashMap)
       - [LinkedHashMap](#LinkedHashMap)
       - [SortedMap](#SortedMap)
         - [TreeMap](#TreeMap)
-    - [When to use each one](#When-to-use-each-one)
+    - [When to use Map Implementations](#When-to-use-Map-Implementations)
   - [Threads](#Threads)
     - [The Concept Of Multitasking](#The-Concept-Of-Multitasking)
       - [Process-Based Multitasking (Multiprocessing)](#Process-Based-Multitasking-(Multiprocessing))
@@ -1107,7 +1107,8 @@ System.out.println("Popped: " + stack.pop()); // Output: 20
 System.out.println("Is the stack empty? " + stack.isEmpty()); // Output: false
 ```
 
-### When to use each one
+### When to Use List Implementations
+
 #### ArrayList
 > - Allows fast random access using indices (O(1) complexity for get and set operations).<br/>
 > - Slower for insertion and deletion, especially in the middle of the list, as elements may need to be shifted (O(n) complexity).<br/>
@@ -1225,7 +1226,7 @@ System.out.println(pbq.poll());
 System.out.println(pbq.peek());
 ```
 
-### When to use each one
+### When to use Queue Implementations
 
 > - Use LinkedList when simple queue or list behavior is needed without concurrent access.<br/>
 > - Use PriorityQueue in single-threaded contexts for tasks with varying priorities.<br/>
@@ -1323,7 +1324,7 @@ while (i.hasNext())
 }
 ```
 
-### When to use each one
+### When to use Set Implementations
 > - HashSet: when you need a list with unique values and with a hashcode order.<br/>
 > - LinkeHashSet: when you need a list with unique values and wiht the same order that inserted in.<br/>
 > - TreeSet: when you need a list with unique value and an order (ascending/ descending).<br/>
@@ -1421,7 +1422,7 @@ System.out.println("SubMap (keys from 'Banana' to 'Fig'): " + subMap);
 // --> SubMap (keys from 'Banana' to 'Fig'): {Banana=20, Cherry=15, Date=25}
 ```
 
-### When to use each one
+### When to use Map Implementations
 > - HasMap: when you don’t need any ordering of keys or values. Ideal for quick lookups and inserts when the order doesn’t matter. <br/>
 > - LinkedHashMap: when you need predictable iteration order (insertion order or access order.<br/>
 > - TreeMap: when you need a sorted map, either by natural ordering of keys or by a custom comparator. <br>
