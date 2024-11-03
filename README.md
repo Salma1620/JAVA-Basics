@@ -1226,15 +1226,16 @@ while (i.hasNext())
 
 
 # Threads
+
 ## The Concept Of Multitasking
 > - To help users Operating System accommodates users the privilege of multitasking, where users can perform multiple actions simultaneously on the machine.<br/>
 > - This Multitasking can be enabled in two ways: `Process-Based Multitasking` and `Thread-Based Multitasking`.<br/>
+<img src="https://github.com/user-attachments/assets/84950d32-f71b-4806-a551-f2c99b8dec21" >
 
 ### Process-Based Multitasking (Multiprocessing)
 > - A process is an independent program in execution with its own memory space and resources, isolated from other processes.<br/>
 > - In this type of Multitasking, processes are heavyweight and each process was allocated by a separate memory area.<br/>
 > - And as the process is heavyweight the cost of communication between processes is high and it takes a long time for switching between processes as it involves actions such as loading, saving in registers, updating maps, lists, etc. <br/>
-
 
 ### thread-Based Multitasking (Multithreading)
 > - Thread: The smallest unit of execution within a process.<br/>
@@ -1243,6 +1244,7 @@ while (i.hasNext())
 > - Concurrency: The ability of the program to manage multiple threads at the same time, which can improve performance by allowing tasks to run in parallel.<br/>
 
 #### Life Cycle Of Thread
+<img src="https://github.com/user-attachments/assets/c938fc54-c8fe-41ee-a805-659599d91c72" >
 
 **1. New State** <br/>
 > - By default, a Thread will be in a new state.<br/> 
