@@ -72,11 +72,11 @@
 # Java JDK JRE JVM
 <img src="https://github.com/user-attachments/assets/7e271bd0-0132-4e63-9b6d-cdc64dfda944" >
 ## JVM (Java Virtual Machine)
-> the core of the Java programming language. It is responsible for executing Java bytecode, which is the intermediate code generated after compiling a Java program.<br/>
-> The JVM makes Java platform-independent by allowing the same Java bytecode to run on any device or operating system that has a compatible JVM.
-> - Loads Bytecode: The JVM loads the compiled .class files into memory.
-> - Execution: It executes the bytecode line by line using an interpreter or compiles it to native machine code using the Just-In-Time (JIT) compiler for performance.
-> - Memory Management: The JVM manages memory allocation and garbage collection to ensure efficient use of resources.
+> - the core of the Java programming language. It is responsible for executing Java bytecode, which is the intermediate code generated after compiling a Java program.<br/>
+> - The JVM makes Java platform-independent by allowing the same Java bytecode to run on any device or operating system that has a compatible JVM.<br/>
+> - Loads Bytecode: The JVM loads the compiled .class files into memory.<br/>
+> - Execution: It executes the bytecode line by line using an interpreter or compiles it to native machine code using the Just-In-Time (JIT) compiler for performance.<br/>
+> - Memory Management: The JVM manages memory allocation and garbage collection to ensure efficient use of resources.<br/>
 
 ## JRE (Java Runtime Environment)
 > provides the necessary environment to run Java applications. <br/>
