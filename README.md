@@ -67,12 +67,13 @@
       - [SortedMap](#SortedMap)
         - [TreeMap](#TreeMap)
     - [When to use Map Implementations](#When-to-use-Map-Implementations)
-  - [Threads](#Threads)
-    - [The Concept Of Multitasking](#The-Concept-Of-Multitasking)
-      - [Process-Based Multitasking (Multiprocessing)](#Process-Based-Multitasking-(Multiprocessing))
-      - [thread-Based Multitasking (Multithreading)](#thread-Based-Multitasking-(Multithreading))
-        - [Life Cycle Of Thread](#Life-Cycle-Of-Thread)
-  - [JDBC (Java Database Connectivity)](#JDBC (Java Database-Connectivity))
+- [Threads](#Threads)
+  - [The Concept Of Multitasking](#The-Concept-Of-Multitasking)
+    - [Process-Based Multitasking (Multiprocessing)](#Process-Based-Multitasking-(Multiprocessing))
+    - [thread-Based Multitasking (Multithreading)](#thread-Based-Multitasking-(Multithreading))
+      - [Life Cycle Of Thread](#Life-Cycle-Of-Thread)
+- [JDBC (Java Database Connectivity)](#JDBC (Java Database-Connectivity))
+- [Streams API](#Streams-API)
 # History
 > Java is a high-level, class-based, object-oriented programming language that was first released by Sun Microsystems in 1995. <br/>
 > The company Oracle then acquired Sun Microsystems in 2009, which explains why this language now belongs to Oracle.
@@ -1503,6 +1504,150 @@ System.out.println("SubMap (keys from 'Banana' to 'Fig'): " + subMap);
 > - It connects database drivers to the database.
 > - This bridge translates the JDBC method call to the ODBC function call.
 > - It makes use of the sun.jdbc.odbc package which includes a native library to access ODBC characteristics.
+
+
+
+# Streams API
+> - Streams represent a pipeline of data processing steps, designed to operate on sequences of elements.<br/>
+> - A Stream doesn’t store data; it provides a way to operate on data sequentially or in parallel.<br/>
+> - Streams are immutable. Once a Stream is created, it cannot be modified, and each operation produces a new Stream.<br/>
+> - Streams built for processing pipelines, like filtering, mapping, and reducing, through methods like filter, map, and reduce.<br/>
+
+## Create Java Stream
+### From a Collection
+```java
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+Stream<String> namesStream = names.stream();
+```
+### From an Array
+```java
+String[] array = {"A", "B", "C"};
+Stream<String> arrayStream = Arrays.stream(array);
+```
+### Using Stream.of()
+```java
+Stream<Integer> numberStream = Stream.of(1, 2, 3, 4, 5);
+```
+### Using Stream.generate()
+```java
+Stream<Double> randomNumbers = Stream.generate(Math::random);
+```
+### Using Stream.iterate()
+```java
+Stream<Integer> evenNumbers = Stream.iterate(0, n -> n + 2).limit(5);
+```
+### Using Stream.builder()
+```java
+Stream.Builder<String> builder = Stream.builder();
+builder.add("first");
+builder.add("second");
+builder.add("third");
+Stream<String> builtStream = builder.build();
+```
+### From Primitives (IntStream, LongStream, DoubleStream)
+```java
+IntStream intStream = IntStream.of(1, 2, 3, 4);
+LongStream longStream = LongStream.range(1, 10); // Range 1 to 9
+DoubleStream doubleStream = DoubleStream.generate(() -> Math.random());
+```
+
+
+## Different Operations On Streams
+
+### Intermediate Operations
+> - Intermediate operations (like filter, map, sorted) are evaluated lazily, meaning they only execute when a terminal operation (like collect, forEach, count) is invoked.<br/>
+> - This can improve performance by processing only the necessary elements.<br/>
+
+#### filter()
+> Filters elements based on a given condition.<br/>
+**Example** <br/>
+```java
+Stream<Integer> stream = Stream.of(1,2,3,4,5);
+Stream<Integer> stream1 = stream.filter(i-> i%2 == 0);
+stream1.forEach(System.out::println);
+```
+
+#### map()
+> Transforms each element of the stream using the provided function. This can be used for mapping values from one type to another. <br/>
+```java
+Stream<Integer> numbers = Stream.of(1, 2, 3, 4, 5);
+Stream<Integer> squares = numbers.map(n -> n * n);
+squares.forEach(System.out::println); // Output: 1, 4, 9, 16, 25
+```
+
+#### sorted()
+> Sorts the elements in natural order or based on a custom comparator. <br/>
+```java
+Stream<Integer> numbers = Stream.of(5, 1, 3, 4, 2);
+Stream<Integer> sortedNumbers = numbers.sorted();
+sortedNumbers.forEach(System.out::println); // Output: 1, 2, 3, 4, 5
+```
+
+#### flatMap()
+> it "flattens" the results into a single stream, removing any nested structures that may result from applying the function. <br/>
+```java
+List<List<Integer>> listOfLists = Arrays.asList(
+    Arrays.asList(1, 2),
+    Arrays.asList(3, 4),
+    Arrays.asList(5, 6)
+);
+List<Integer> result = listOfLists.stream()
+                                  .flatMap(list -> list.stream())  // flatten the List into a single Stream
+                                  .collect(Collectors.toList());
+// other example
+List<String> list = Arrays.asList("hello", "world");
+List<String> result = list.stream()
+                          .flatMap(s -> Arrays.stream(s.split("")))  // Split each string and flatten it
+                          .collect(Collectors.toList());
+```
+
+#### peek()
+> Allows you to perform an action on each element of the stream without modifying the stream. It's often used for debugging or logging purposes.<br/>
+```java
+Stream<Integer> numbers = Stream.of(1, 2, 3, 4, 5);
+numbers.peek(n -> System.out.println("Processing: " + n))
+       .filter(n -> n % 2 == 0)
+       .forEach(System.out::println); // Output: Processing: 1, 2, Processing: 2, 4
+```
+
+#### distinct()
+> Removes duplicate elements from the stream. <br/>
+```java
+Stream<Integer> numbers = Stream.of(1, 2, 2, 3, 3, 3, 4);
+Stream<Integer> distinctNumbers = numbers.distinct();
+distinctNumbers.forEach(System.out::println); // Output: 1, 2, 3, 4
+```
+
+#### limit()
+> Limits the number of elements in the stream. <br/>
+```java
+Stream<Integer> numbers = Stream.of(1, 2, 3, 4, 5);
+Stream<Integer> firstThree = numbers.limit(3);
+firstThree.forEach(System.out::println); // Output: 1, 2, 3
+```
+
+### terminal operations
+> - terminal operation consumes the stream and produces an outcome (e.g., a value, a collection, or a side-effect).<br/>
+> - Once a terminal operation is invoked, the stream is considered consumed, and no further operations can be performed on it.<br/>
+
+#### forEach()
+> Used to perform an action for each element of the stream. <br/>
+```java
+Stream<Integer> numbers = Stream.of(1, 2, 3, 4, 5);
+numbers.forEach(System.out::println);  // Prints each number
+```
+
+#### collect()
+> accumulate the elements of the stream into a collection, such as a List, Set, or a Map. <br/>
+
+
+
+
+
+
+
+
+
 
 
 
