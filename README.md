@@ -74,6 +74,10 @@
       - [Life Cycle Of Thread](#Life-Cycle-Of-Thread)
 - [JDBC (Java Database Connectivity)](#JDBC (Java Database-Connectivity))
 - [Streams API](#Streams-API)
+  - [Create Java Stream](#Create-Java-Stream)
+  - [Different Operations On Streams](#Different-Operations-On-Streams)
+    - [Intermediate Operations](#Intermediate-Operations)
+    - [Terminal operations](#Terminal-operations)
 # History
 > Java is a high-level, class-based, object-oriented programming language that was first released by Sun Microsystems in 1995. <br/>
 > The company Oracle then acquired Sun Microsystems in 2009, which explains why this language now belongs to Oracle.
@@ -1626,7 +1630,7 @@ Stream<Integer> firstThree = numbers.limit(3);
 firstThree.forEach(System.out::println); // Output: 1, 2, 3
 ```
 
-### terminal operations
+### Terminal operations
 > - terminal operation consumes the stream and produces an outcome (e.g., a value, a collection, or a side-effect).<br/>
 > - Once a terminal operation is invoked, the stream is considered consumed, and no further operations can be performed on it.<br/>
 
@@ -1639,6 +1643,63 @@ numbers.forEach(System.out::println);  // Prints each number
 
 #### collect()
 > accumulate the elements of the stream into a collection, such as a List, Set, or a Map. <br/>
+```java
+Stream<Integer> numbers = Stream.of(1, 2, 3, 4, 5);
+List<Integer> result = numbers.collect(Collectors.toList());  // Collects into a List
+System.out.println(result);  // Output: [1, 2, 3, 4, 5]
+```
+> Other common Collectors are:<br/>
+> - Collectors.toSet() – collects into a Set. <br/>
+> - Collectors.joining() – concatenates elements into a string.<br/>
+
+#### count()
+>  Returns the number of elements in the stream. <br/>
+```java
+Stream<Integer> numbers = Stream.of(1, 2, 3, 4, 5);
+long count = numbers.count();  // Counts the number of elements in the stream
+System.out.println(count);  // Output: 5
+```
+
+#### anyMatch() and allMatch()
+> - The anyMatch operation checks if any element of a stream matches a given condition. <br/>
+> - The allMatch operation checks if all elements satisfy the given condition. <br/>
+> - They return a boolean value indicating the result. <br/>
+```java
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);  
+// Check if any element is greater than 3  
+boolean anyMatch = numbers.stream()  
+                                  .anyMatch(n -> n > 3);  
+// Check if all elements are greater than 0  
+boolean allMatch = numbers.stream()  
+                                  .allMatch(n -> n > 0);  
+```
+
+#### reduce()
+> Combines elements of a stream to produce a single result.<br/>
+```java
+Stream<Integer> numbers = Stream.of(1, 2, 3, 4);
+int product = numbers.reduce(1, (a, b) -> a * b);
+System.out.println(product);  // Output: 24
+```
+
+### findFirst() and findAny()
+> Returns the first element of the stream or any element. <br/>
+```java
+Stream<Integer> numbers = Stream.of(1, 2, 3, 4, 5);
+Optional<Integer> first = numbers.findFirst();  // Finds the first element
+first.ifPresent(System.out::println);  // Output: 1
+```
+
+#### toArray()
+> Collects the elements of the stream into an array.<br/>
+```java
+Stream<Integer> numbers = Stream.of(1, 2, 3, 4, 5);
+Integer[] array = numbers.toArray(Integer[]::new);  // Collects into an array
+System.out.println(Arrays.toString(array));  // Output: [1, 2, 3, 4, 5]
+```
+
+
+
 
 
 
