@@ -89,6 +89,7 @@
 > - the core of the Java programming language. It is responsible for executing Java bytecode, which is the intermediate code generated after compiling a Java program.<br/>
 > - The JVM makes Java platform-independent by allowing the same Java bytecode to run on any device or operating system that has a compatible JVM.<br/>
 > - Loads Bytecode: The JVM loads the compiled .class files into memory.<br/>
+> - The ClassLoader in Java is a component of the JVM responsible for dynamically loading classes at runtime. It converts .class files (compiled bytecode) into usable Java objects within the program.<br/>
 > - Execution: It executes the bytecode line by line using an interpreter or compiles it to native machine code using the Just-In-Time (JIT) compiler for performance.<br/>
 > - Memory Management: The JVM manages memory allocation and garbage collection to ensure efficient use of resources.<br/>
 
