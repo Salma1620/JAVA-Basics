@@ -105,6 +105,7 @@
   > - Additional Libraries: The JDK includes additional libraries required for development, such as those for GUI development (AWT, Swing) and networking.
 
 ## How to run java code
+<img src="https://github.com/user-attachments/assets/dd6d2e3f-0591-4d37-a0ca-a132d562b8df" > <br/>
 **1 - Navigate to the Directory Containing Your Java File** <br/>
 **2 - Compile the Java Code** <br/>
 > - Before running your Java program, you need to compile it. <br/>
