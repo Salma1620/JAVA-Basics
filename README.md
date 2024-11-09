@@ -211,7 +211,7 @@ class Calculator {
 }
 ```
 
-#### Keyword Final <br/>
+#### Keyword Final
 **final with Variables** <br/>
 > When a variable is declared as final, its value cannot be changed once it has been assigned. This effectively makes the variable a constant. <br/>
 > - Final Primitive Variables: Once assigned, the value cannot be changed. <br/> 
