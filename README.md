@@ -79,6 +79,10 @@
     - [Intermediate Operations](#Intermediate-Operations)
     - [Terminal operations](#Terminal-operations)
 - [LTS versions](#LTS-versions)
+  - [Java 8](#Java-8)
+  - [Java 11](#Java-11)
+  - [Java 17](#Java-17)
+  - [Java 21](#Java-21)
 # History
 > Java is a high-level, class-based, object-oriented programming language that was first released by Sun Microsystems in 1995. <br/>
 > The company Oracle then acquired Sun Microsystems in 2009, which explains why this language now belongs to Oracle.
@@ -1959,6 +1963,14 @@ names.stream()
      .filter((@NotNull var name) -> name.startsWith("A"))
      .forEach(System.out::println);
 ```
+
+## Java 17
+
+
+
+
+
+
 
 
 
