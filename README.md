@@ -78,6 +78,7 @@
   - [Different Operations On Streams](#Different-Operations-On-Streams)
     - [Intermediate Operations](#Intermediate-Operations)
     - [Terminal operations](#Terminal-operations)
+- [LTS versions](#LTS-versions)
 # History
 > Java is a high-level, class-based, object-oriented programming language that was first released by Sun Microsystems in 1995. <br/>
 > The company Oracle then acquired Sun Microsystems in 2009, which explains why this language now belongs to Oracle.
@@ -1525,6 +1526,7 @@ System.out.println("SubMap (keys from 'Banana' to 'Fig'): " + subMap);
 List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
 Stream<String> namesStream = names.stream();
 ```
+`In this example, names is immutable (constant)` <br/>
 ### From an Array
 ```java
 String[] array = {"A", "B", "C"};
@@ -1698,20 +1700,265 @@ first.ifPresent(System.out::println);  // Output: 1
 Stream<Integer> numbers = Stream.of(1, 2, 3, 4, 5);
 Integer[] array = numbers.toArray(Integer[]::new);  // Collects into an array
 System.out.println(Arrays.toString(array));  // Output: [1, 2, 3, 4, 5]
+``` 
+
+# LTS versions
+> Java Long-Term Support (LTS) versions are stable releases that Oracle and other vendors support for an extended period, making them ideal for production environments.<br/>
+
+## Java 8
+### Functionnal Interface
+> - Functional interfaces are interfaces that have exactly one abstract method. <br/>
+> - They are annotated with `@FunctionalInterface`. <br/>
+
+**Example : Functionnal Interface**
+```Java
+@FunctionalInterface
+interface MyInterface {
+    void myAbstractMethod(); // This is the single abstract method
+}
 ```
 
+### Lamdba Expression
+> - Lambda expression is a powerful feature in Java 8 that allows you to implement the functional interfaces.<br/>
+> - They make your code more readable and expressive, especially when working with collections, streams, and functional programming constructs.<br/>
 
+**Example : Lambda Expression**
+```Java
+// Before Java 8
+public class BeforeJava8Example {
+    public static void main(String[] args) {
+        MyInterface implementation = new MyInterface() {
+            @Override
+            public void myAbstractMethod() {
+                System.out.println("Hello from myAbstractMethod!");
+            }
+        };
 
+        implementation.myAbstractMethod(); // Call the implemented method
+    }
+}
 
+// Java 8: Using lambda expression
+public class Java8Example {
+    public static void main(String[] args) {
+        MyInterface implementation = () -> {
+            System.out.println("Hello from myAbstractMethod!");
+        };
 
+        implementation.myAbstractMethod(); // Call the implemented method
+    }
+}
+```
 
+### Method Reference
+>  - A method reference in Java is a shorthand notation of a lambda expression that calls an existing method.<br/>
+>  - It's a way to refer to a method without invoking it.<br/>
 
+#### Reference to a Static Method
 
+```Java
+public class MethodReferenceExample {
+    public static void main(String[] args) {
+        String[] stringArray = { "Tom", "Jerry", "Mickey", "Donald" };
+        
+        // Using a method reference to a static method
+        Arrays.sort(stringArray, MethodReferenceExample::compareStrings);
 
+        // Print sorted array
+        for (String s : stringArray) {
+            System.out.println(s);
+        }
+    }
 
+    // Static method to compare strings
+    public static int compareStrings(String s1, String s2) {
+        return s1.compareToIgnoreCase(s2);
+    }
+}
+```
 
+#### Reference to an Instance Method of a Particular Object
 
+```Java
+class Printer {
+    public void print(String message) {
+        System.out.println(message);
+    }
+}
 
+public class MethodReferenceExample {
+    public static void main(String[] args) {
+        Printer printer = new Printer();
+        
+        // Using method reference to an instance method of a particular object
+        MyInterface ref = printer::print;
+        
+        // Calling the method through the reference
+        ref.display("Hello from method reference!");
+    }
+}
+
+@FunctionalInterface
+interface MyInterface {
+    void display(String message);
+}
+```
+
+#### Reference to an Instance Method of an Arbitrary Object of a Particular Type
+```Java
+public class MethodReferenceExample {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("Tom", "Jerry", "Mickey");
+
+        // Using method reference to an instance method of an arbitrary object
+        names.forEach(System.out::println);
+    }
+}
+```
+
+#### Reference to a Constructor
+```Java
+class Dog {
+    public Dog() {
+        System.out.println("Dog created");
+    }
+}
+
+public class MethodReferenceExample {
+    public static void main(String[] args) {
+        // Using method reference to a constructor
+        Supplier<Dog> dogSupplier = Dog::new;
+        
+        // Create a new Dog instance
+        Dog dog = dogSupplier.get();
+    }
+}
+```
+
+### Default and Static Methods in Interfaces
+> - Interfaces could now have methods with implementations, allowing backward compatibility and the addition of new methods to interfaces without breaking existing implementations.<br/>
+
+```java
+interface Outil {
+    static void afficherMessage() {
+        System.out.println("Message de l'interface Outil.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Appel de la méthode statique sans implémenter l'interface
+        Outil.afficherMessage(); // Output: Message de l'interface Outil.
+    }
+}
+```
+
+```java
+interface Vehicle {
+    // Abstract method (must be implemented by any class that implements this interface)
+    void drive();
+
+    // Default method
+    default void startEngine() {
+        System.out.println("Engine started.");
+    }
+}
+
+class Car implements Vehicle {
+    @Override
+    public void drive() {
+        System.out.println("Car is driving.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car myCar = new Car();
+        
+        // Calling the abstract method
+        myCar.drive(); // Output: Car is driving.
+
+        // Calling the static method
+        Vehicle.checkBattery(); // Output: Battery is good.
+    }
+}
+```
+### Optional Class
+> Optional class was introduced to handle values that may or may not be present, helping to avoid the common NullPointerException issues. <br/>
+
+#### isPresent() and isEmpty()
+> - isPresent() checks if a value is present.<br/>
+> - isEmpty() checks if a value is absent.<br/>
+```java
+Optional<String> opt = Optional.of("Hello");
+if (opt.isPresent()) {
+    System.out.println("Value is present: " + opt.get());
+}
+```
+
+#### ifPresent()
+> Executes a function if a value is present.<br/>
+```java
+opt.ifPresent(value -> System.out.println("Value: " + value));
+```
+
+#### orElse(), orElseGet() and orElseThrow()
+> - orElse(): Returns the value if present; otherwise, it returns a specified default value.<br/>
+> - orElseGet(): Returns the value if present; otherwise, it calls a Supplier function to provide a default value.<br/>
+> - orElseThrow(): Returns the value if present; otherwise, it throws an exception.<br/>
+```java
+String result = opt.orElse("Default Value");
+String result2 = opt.orElseGet(() -> "Computed Default Value");
+String value = opt.orElseThrow(() -> new IllegalArgumentException("Value is absent"));
+```
+
+## Java 11
+
+### Running Java Files Directly
+> With Java 11, you can run a Java file directly without compiling it first, making it easier to quickly test code snippets.<br/>
+```java
+java HelloWorld.java
+```
+
+### New String Methods
+> Java 11 adds a few new methods to the String class: isBlank, lines, strip, stripLeading, stripTrailing, and repeat.<br/>
+
+```java
+" ".isBlank();          // true - Checks if a string is empty or contains only white space
+"Hello\nWorld".lines(); // Stream<String> - Splits a string into lines
+" Java ".strip();       // "Java" - Removes leading and trailing whitespace
+"Hello".repeat(3);      // "HelloHelloHello" - Repeats the string
+```
+
+```java
+String multilineString = "Baeldung helps \n \n developers \n explore Java.";
+List<String> lines = multilineString.lines()
+  .filter(line -> !line.isBlank())
+  .map(String::strip)
+  .collect(Collectors.toList());
+assertThat(lines).containsExactly("Baeldung helps", "developers", "explore Java.");
+```
+
+### Optionnal new method isEmpty
+```java
+Optional<String> optional = Optional.empty();
+System.out.println(optional.isEmpty());    // Output: true
+```
+
+### Collection to an Array
+> The java.util.Collection interface contains a new default toArray method which takes an IntFunction argument.<br/>
+```java
+List<String> sampleList = Arrays.asList("Java", "Kotlin");
+String[] sampleArray = sampleList.toArray(String[]::new);
+```
+
+### using the local variable syntax (var keyword) in lambda parameters
+```java
+List<String> names = List.of("Alice", "Bob", "Charlie");
+names.stream()
+     .filter((@NotNull var name) -> name.startsWith("A"))
+     .forEach(System.out::println);
+```
 
 
 
