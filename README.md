@@ -672,6 +672,7 @@ public class Main {
 > When executing Java code, different errors can occur, Java will throw an exception<br/>
 
 ## Types of Exception
+<img src="https://github.com/user-attachments/assets/d47dcc09-cf0f-4ea1-9d23-de5ce9fe61f2" >
 
 ### Built-in Exceptions
 > Built-in exceptions are the exceptions that are available in Java libraries. These exceptions are suitable to explain certain error situations.<br/>
