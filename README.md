@@ -1354,7 +1354,7 @@ while (i.hasNext())
 > - Some implementations allow null key and null values like the `HashMap` and `LinkedHashMap`, but some do not like the `TreeMap`.
 > - The order of a map depends on the specific implementations. For example, `TreeMap` and `LinkedHashMap` have predictable orders, while `HashMap` does not.
 > - There are two interfaces for implementing Map in Java. They are `Map` and `SortedMap`, and four classes: `HashMap`, `TreeMap`,  `LinkedHashMap` and `HashTable`.
-
+<img src="https://github.com/user-attachments/assets/948a72d4-5f21-4b11-bf70-78a1c172dd33" >
 ### Commonly Used Map Implementations
 ####  HashMap 
 > - This class uses a technique called Hashing.<br/>
