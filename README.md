@@ -66,6 +66,7 @@
       - [LinkedHashMap](#LinkedHashMap)
       - [SortedMap](#SortedMap)
         - [TreeMap](#TreeMap)
+      - [HashTable](#HashTable)
     - [When to use Map Implementations](#When-to-use-Map-Implementations)
 - [Threads](#Threads)
   - [The Concept Of Multitasking](#The-Concept-Of-Multitasking)
@@ -1352,7 +1353,7 @@ while (i.hasNext())
 > - A Map cannot contain duplicate keys and each key can map to at most one value.
 > - Some implementations allow null key and null values like the `HashMap` and `LinkedHashMap`, but some do not like the `TreeMap`.
 > - The order of a map depends on the specific implementations. For example, `TreeMap` and `LinkedHashMap` have predictable orders, while `HashMap` does not.
-> - There are two interfaces for implementing Map in Java. They are `Map` and `SortedMap`, and three classes: `HashMap`, `TreeMap`, and `LinkedHashMap`.
+> - There are two interfaces for implementing Map in Java. They are `Map` and `SortedMap`, and four classes: `HashMap`, `TreeMap`,  `LinkedHashMap` and `HashTable`.
 
 ### Commonly Used Map Implementations
 ####  HashMap 
@@ -1434,6 +1435,40 @@ SortedMap<String, Integer> subMap = sortedMap.subMap("Banana", "Fig");
 System.out.println("SubMap (keys from 'Banana' to 'Fig'): " + subMap);
 // --> SubMap (keys from 'Banana' to 'Fig'): {Banana=20, Cherry=15, Date=25}
 ```
+#### HashTable
+> - Hashtable is one of Java’s legacy classes for storing key-value pairs.<br/>
+> - While the Hashtable class still exists in Java and can still be used, it’s generally recommended to use the Map interface or one of its implementations instead.<br/>
+> - It is similar to HashMap, but is synchronized.<br/>
+> - HashMap doesn’t provide any Enumeration, while Hashtable provides not fail-fast Enumeration.<br/>
+> - It doesn't accept null key or null values.<br/>
+> - The keys are unique.<br/>
+
+```java
+Hashtable<Integer, String> ht1 = new Hashtable<>();
+// Initialization of a Hashtable
+// using Generics
+Hashtable<Integer, String> ht2 = new Hashtable<Integer, String>(hm);
+// Initialization of a Hashtable
+// using Generics
+Hashtable<Integer, String> ht2 = new Hashtable<Integer, String>(2);
+
+// Add elements to the hashtable
+ht1.put("vishal", 10);
+ht1.put("sachin", 30);
+ht1.put("vaibhav", 20);
+
+// Print size and content
+System.out.println("Size of map is: " + ht1.size());
+System.out.println(ht1);
+
+// Check if a key is present and if present, print value
+if (ht1.containsKey("vishal")) {
+  Integer a = ht1.get("vishal");
+  System.out.println("value for key" + " \"vishal\" is: " + a);
+}            
+```
+
+
 
 ### When to use Map Implementations
 > - HasMap: when you don’t need any ordering of keys or values. Ideal for quick lookups and inserts when the order doesn’t matter. <br/>
