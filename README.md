@@ -999,7 +999,7 @@ while (ltr.hasNext()) {
 > - The Java Collections Framework (JCF) is part of the java.util package and includes several interfaces, classes, and methods to manage and manipulate collections of data.<br/>
 > - Collections are widely used because they simplify and streamline working with groups of objects.<br/>
 > - It has subinterfaces like `List`, `Set`, and `Queue`<br/>
-<img src="https://github.com/user-attachments/assets/5848d904-e656-45ff-8eed-5215184ca8de" >
+<img src="https://github.com/user-attachments/assets/ef7af8e2-cde2-4164-b262-ab55bb447988" >
 
 ## List
 > - List is an interface that represents an ordered collection (also known as a sequence) of elements.<br/>
