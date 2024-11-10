@@ -1,4 +1,4 @@
-# JAVA-Basics 2
+# JAVA-Basics 
 
 # Table of contents
 - [History](#History)
@@ -2002,11 +2002,34 @@ names.stream()
 
 ## Java 17
 
+### Pattern Matching for `switch`
+> - Pattern matching allows for simplified switch structures by avoiding manual type casting.<br/>
+> - It enables evaluating and handling different types within switch in a concise way.<br/>
+```java
+Object obj = 123;
+String result = switch (obj) {
+    case Integer i -> "Integer: " + i;
+    case String s -> "String: " + s;
+    default -> "Unknown type";
+};
+```
 
+### Sealed Classes
+> - Sealed classes allow restricting the subclasses of a class.<br/>
+> - This enables better inheritance control and a more structured code architecture by limiting the classes that can extend a class or implement an interface.<br/>
+```java
+public sealed class Shape permits Circle, Rectangle { }
+public final class Circle extends Shape { }
+public final class Rectangle extends Shape { }
+```
 
-
-
-
+## Java 21
+### String Templates
+```java
+int age = 21;
+String message = STR."Hello, I am ${age} years old.";
+System.out.println(message);  // Output: Hello, I am 21 years old.
+```
 
 
 
