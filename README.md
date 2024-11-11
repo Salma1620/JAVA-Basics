@@ -92,18 +92,40 @@
 <img src="https://github.com/user-attachments/assets/7e271bd0-0132-4e63-9b6d-cdc64dfda944" >
 
 ## JVM (Java Virtual Machine)
-> - the core of the Java programming language. It is responsible for executing Java bytecode, which is the intermediate code generated after compiling a Java program.<br/>
-> - The JVM makes Java platform-independent by allowing the same Java bytecode to run on any device or operating system that has a compatible JVM.<br/>
+> - the core of the Java programming language. It is responsible for `executing Java bytecode`, which is the intermediate code generated after compiling a Java program.<br/>
+> - The JVM makes Java `platform-independent` by allowing the same Java bytecode to run on any device or operating system that has a compatible JVM.<br/>
 > - Loads Bytecode: The JVM loads the compiled .class files into memory.<br/>
-> - The ClassLoader in Java is a component of the JVM responsible for dynamically loading classes at runtime. It converts .class files (compiled bytecode) into usable Java objects within the program.<br/>
 > - Execution: It executes the bytecode line by line using an interpreter or compiles it to native machine code using the Just-In-Time (JIT) compiler for performance.<br/>
+> - The `JIT` compiles suitable bytecode sequences into native machine code.<br/>
+> - For a compiled method, the JVM directly calls the compiled code by JIT, instead of interpreting it. That encreases the performance<br/>
 > - Memory Management: The JVM manages memory allocation and garbage collection to ensure efficient use of resources.<br/>
+### JVM memory types
+JVM consists of a few memory storages as mentioned below:
+
+> - `Class(Method) Area`: stores class-level data of every class such as the runtime constant pool, field, and method data, and the code for methods.<br/>
+
+> - `Heap`: <br/>
+> --- The heap is used for all objects and dynamic data whose lifespan is not limited to a single method.<br/>
+> --- Heap memory is larger and slower to access than the stack.<br/>
+> --- Garbage Collector: In Java, heap memory is managed by the garbage collector, which automatically frees memory for objects that are no longer referenced.<br/>
+> --- `Java String Pool`: is a place in heap memory where all the literal strings defined in the program are stored<br/>
+
+> - `Stack:` <br/>
+> --- Primitive local variables (like int, boolean, char, etc.) are stored directly on the stack. <br/>
+> --- Object references (such as String or Person) are also stored on the stack, but the objects themselves are stored in the heap.<br>
+> --- Stack memory is relatively small and fast, allowing quick access to local variables.<br/>
+> --- Stack memory is automatically freed when a method finishes execution.<br/>
+
+> - `Program Counter Register`: stores the address of the Java virtual machine instruction currently being executed.<br/>
+
+> - `Native Method Stack`: stores all the native methods used in the application.<br/>
 
 ## JRE (Java Runtime Environment)
 > provides the necessary environment to run Java applications. <br/>
   > - JVM: The core engine that executes Java bytecode.
   > - Libraries: A set of standard libraries (like java.lang, java.util, etc.) required by Java applications to run.
   > - Other Files: Configuration files, property files, etc., that support the JVM in running Java programs.
+  > - The `ClassLoader` in Java is a component responsible for dynamically loading classes at runtime in the JVM.<br/>
 
 ## JDK (Java Development Kit)
 > full-featured software development kit used for developing Java applications.
@@ -120,7 +142,9 @@
     Java Virtual Machine (JVM). <br/>
 > - the JDK is used to compile your .java file into a .class file (bytecode). <br/>
 
-```java javac HelloWorld.java ``` <br/>
+```java 
+javac HelloWorld.java
+``` 
 
 **3 - Run the Java Program** <br/>
 > - Once compiled, you can run your program using the Java interpreter (java command). <br/>
@@ -132,6 +156,66 @@
 
 ```java java HelloWorld ``` <br/>
 # Basics
+## Data types in Java
+
+### Primitive Data Type
+> - `boolean`: stores value true or false<br/>
+> - `byte`: stores an 8-bit signed two’s complement integer<br/>
+> - `char`: stores a single 16-bit Unicode character<br/>
+> - `short`: stores a 16-bit signed two’s complement integer<br/>
+> - `int`: stores a 32-bit signed two’s complement integer<br/>
+> - `long`: stores a 64-bit two’s complement integer<br/>
+> - `float`: stores a single-precision 32-bit IEEE 754 floating-point<br/>
+> - `double`: stores a double-precision 64-bit IEEE 754 floating-point<br/>
+
+### Non-Primitive Data Type 
+> - Reference Data types will contain a memory address of the variable’s values because it is not able to directly store the values in the memory.<br/>
+> - Strings, Array, Class, Object, Interface<br/>
+
+## Wrapper Classes in Java
+> - wrapper classes provide a way to use primitive data types (int, char, boolean, etc.) as objects.<br/>
+> - Each primitive type has a corresponding wrapper class in Java, located in the java.lang package<br/>
+> - Wrapper classes provide various utility methods for data manipulation and conversion. For instance, Integer.parseInt("123") converts a String to an int.
+> - Nullability: Unlike primitives, wrapper objects can be null, allowing uninitialized states or the absence of a value to be represented.
+> - Immutability: Wrapper objects are immutable, meaning once created, their value cannot change.
+
+### Autoboxing and Unboxing
+> - Autoboxing: Automatically converts a primitive to its corresponding wrapper type. ``` Integer intObj = 10; ```
+> - Unboxing: Automatically converts a wrapper object back to its primitive type.  ``` int intValue = intObj; ```
+
+```java
+// Using wrapper class Integer to wrap a primitive int
+Integer intObject = Integer.valueOf(5); // Explicit boxing
+int primitiveInt = intObject.intValue(); // Explicit unboxing
+        
+// Using autoboxing and unboxing
+Integer autoBoxedInt = 10; // Autoboxing
+int autoUnboxedInt = autoBoxedInt; // Unboxing
+        
+// Using utility method
+String str = "123";
+int parsedInt = Integer.parseInt(str); // Converts String to int
+```
+
+## I/O Stream in Java
+> - I/O Streams (Input/Output Streams) are used to handle the input and output of data, enabling data transfer between different sources, such as files, networks, or memory.<br/>
+> - The `java.io` package provides various classes for managing these data streams,<br/>
+
+### Types of I/O Streams
+#### Byte Streams:
+> - Used to handle raw binary data (e.g., images, audio files).
+> - Main classes are `InputStream` (for reading) and `OutputStream` (for writing)
+> - `FileInputStream / FileOutputStream`: Read and write bytes to files.
+> - `BufferedInputStream / BufferedOutputStream`: read or write larger chunks of data at once into memory. Once the buffer is filled (in the case of reading), the program accesses this buffer directly instead of going back to the file each time. This results in fewer I/O operations and better performance, especially with large files or repetitive read/write tasks.
+> - `DataInputStream / DataOutputStream`: Read/write primitive data types (int, double, etc.).
+
+#### Character Streams:
+> - Handle text data (e.g., reading/writing characters or strings).
+> - Main classes are `Reader` (for reading) and `Writer` (for writing).
+
+
+
+
 ## Packages In Java
 > - A package in Java is a namespace that organizes a set of related classes and interfaces.<br/>
 > - Conceptually you can think of packages as being similar to different folders on your computer.<br/>
