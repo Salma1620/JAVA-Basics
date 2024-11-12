@@ -5,6 +5,13 @@
 - [Java jvm-jre-jdk](#Java-JDK-JRE-JVM)
 - [How to run java code](#How-to-run-java-code)
 - [Basics](#Basics)
+  - [Data types in Java](#Data-types-in-Java)
+  - [Wrapper Classes in Java](#Wrapper-Classes-in-Java)
+    - [Autoboxing and Unboxing](#Autoboxing-and-Unboxing)
+  - [I/O Stream in Java](#I/O-Stream-in-Java)
+    - [Types of I/O Streams](#Types-of-I/O-Streams)
+      - [Byte Streams](#Byte-Streams)
+      - [Character Streams](#Character-Streams)
   - [Packages In Java](#Packages-In-Java)
   - [Arrays In Java](#Arrays-In-Java)
 - [Object Oriented Programming Language (POO)](#Object-Oriented-Programming-Language)
@@ -20,8 +27,15 @@
   - [Four Pillars of Object-Oriented Programming in Java](#Four-Pillars-of-Object-Oriented-Programming-in-Java)
     - [Encapsulation](#Encapsulation)
     - [Inheritance](#Inheritance)
+      - [Method Overriding](#Method-Overriding)
+        - [Covariant Return Types](#Covariant-Return-Types)
+      - [Super keyword](#Super-keyword)
     - [Polymorphism](#Polymorphism)
+      - [Compile-Time Polymorphism (Static Polymorphism)](#Compile-Time-Polymorphism-(Static-Polymorphism))
+      - [Run-Time Polymorphism (Dynamic Polymorphism)](#Run-Time-Polymorphism-(Dynamic-Polymorphism))
     - [Abstraction](#Abstraction)
+      - [Abstract Classes](#Abstract-Classes)
+      - [Abstract Methods](#Abstract-Methods)
 - [Interfaces](#Interfaces)
 - [Exception Handling and Assertions](#Exception-Handling-and-Assertions)
   - [Types of Exception](#Types-of-Exception)
@@ -156,6 +170,7 @@ javac HelloWorld.java
 
 ```java java HelloWorld ``` <br/>
 # Basics
+
 ## Data types in Java
 
 ### Primitive Data Type
@@ -202,18 +217,16 @@ int parsedInt = Integer.parseInt(str); // Converts String to int
 > - The `java.io` package provides various classes for managing these data streams,<br/>
 
 ### Types of I/O Streams
-#### Byte Streams:
+#### Byte Streams
 > - Used to handle raw binary data (e.g., images, audio files).
 > - Main classes are `InputStream` (for reading) and `OutputStream` (for writing)
 > - `FileInputStream / FileOutputStream`: Read and write bytes to files.
 > - `BufferedInputStream / BufferedOutputStream`: read or write larger chunks of data at once into memory. Once the buffer is filled (in the case of reading), the program accesses this buffer directly instead of going back to the file each time. This results in fewer I/O operations and better performance, especially with large files or repetitive read/write tasks.
 > - `DataInputStream / DataOutputStream`: Read/write primitive data types (int, double, etc.).
 
-#### Character Streams:
+#### Character Streams
 > - Handle text data (e.g., reading/writing characters or strings).
 > - Main classes are `Reader` (for reading) and `Writer` (for writing).
-
-
 
 
 ## Packages In Java
@@ -228,12 +241,42 @@ int parsedInt = Integer.parseInt(str); // Converts String to int
 
 ## Arrays In Java
 > array is a container object that holds a fixed number of values of a single type.<br/>
-
-The declaration of an array in Java is as follows:
+### Types of Arrays in Java
+Single-Dimensional Arrays  int[] singleDimArray = {1, 2, 3, 4, 5}; 
+Multi-Dimensional Arrays
+###  basic array operations
+#### Array declaration
 ```java
-int[] myIntArray = new int[10]; // declares an array of integers
-String[] myStringArray = new String[50]; // declares an array of strings
+int[] myIntArray ;// declares an array of integers
+int Array[] ;// declares an array of integers another way
+int[] intArray = { 1,2,3,4,5,6,7,8,9,10 }; // another way
+myIntArray = new int[10]; // initializes the numbers array to hold 5 integers. The default value for each element is 0.
+String[] myStringArray = new String[50]; // declares and initializes an array of strings with null default value.
 ```
+
+#### Getting ans setting an Element of an Array
+```java
+// Setting the first element of the array
+numbers[0] = 10;
+
+// Accessing the first element
+int firstElement = numbers[0]; 
+```
+
+#### Array Length
+```java
+int length = numbers.length; 
+```
+
+#### Array cloning
+```java
+int cloneArray[] = intArray.clone();
+```
+
+
+
+
+
 
 # Object Oriented Programming Language
 > Object-Oriented Programming is a programming paradigm centered around the concept of "objects," which are instances of "classes."
@@ -486,23 +529,14 @@ public class Main {
 > - The new class is called a `subclass` (or derived class), and the existing class is called a `superclass` (or base class).<br/>
 > - This promotes code reuse and establishes a natural hierarchy between classes. <br/>
 > - In Java, the `extends` keyword is used to create a subclass.<br/>
-> - **Single Inheritance:** <br/>
-  > Java supports single inheritance, meaning a class can only extend one superclass. However, a class can implement multiple interfaces, which provides a way to achieve multiple            inheritance.<br/>
-> - **Constructor Inheritance:** <br/>
-  > A subclass does not inherit the constructors of its superclass, but it can call a superclass's constructor using `super()` in its own constructor.
+>  **Single Inheritance:** <br/>
+> - Java supports single inheritance, meaning a class can only extend one superclass. However, a class can implement multiple interfaces, which provides a way to achieve multiple           inheritance.<br/>
+> **Constructor Inheritance:** <br/>
+> - A subclass does not inherit the constructors of its superclass, but it can call a superclass's constructor using `super()` in its own constructor.
 
-**Example:** Constructor Inheritance
-```java
-class Dog extends Animal {
-    void printMessage() {
-        super.eat();  // Calls the superclass version of eat()
-        System.out.println("This message is from the Dog class.");
-    }
-}
-```
-> - **Method Overriding:** <br/>
-  > A subclass can provide a specific implementation for a method that is already defined in its superclass. This is known as method overriding. <br/>
-  > The `@Override` annotation is often used to indicate that a method is being overridden.
+### Method Overriding 
+> -  A subclass can provide a specific implementation for a method that is already defined in its superclass. This is known as method overriding. <br/>
+> - The `@Override` annotation is often used to indicate that a method is being overridden. <br/>
 
 **Example:** Metod Overriding
 ```java
@@ -531,6 +565,26 @@ class Dog extends Animal {
     }
 }
 ```
+
+#### Covariant Return Types
+> - covariant return types allow a method in a subclass to override a method in its superclass and return a more specific type (a subtype) than the return type specified by the superclass method. <br/>
+> - This feature was introduced in Java 5 to provide more flexibility in method overriding.<br/>
+**Example:**
+```java
+class Animal {
+    Animal getAnimal() {
+        return new Animal();
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    Dog getAnimal() {  // Returning a subclass (Dog) instead of Animal
+        return new Dog();
+    }
+}
+```
+
 
 
 **Example:** use inheritance from animal class
@@ -614,6 +668,26 @@ class Dog extends Animal {
 ### Compile-Time Polymorphism (Static Polymorphism)
 > **Method Overloading:** multiple methods in the same class have the same name but different parameter lists.<br/<
 
+**Example:** Method Overloading
+
+```java
+class Calculator {
+    // Method to add two integers
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    // Overloaded method to add three integers
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Overloaded method to add two doubles
+    double add(double a, double b) {
+        return a + b;
+    }
+}
+```
 ### Run-Time Polymorphism (Dynamic Polymorphism)
 
 > **Method Overriding:** a subclass provides a specific implementation of a method that is already defined in its superclass.<br/>
@@ -684,7 +758,10 @@ public class Main {
 > - **Inheritance:** <br/>
 >   A concrete subclass that extends an abstract class must provide implementations for all abstract methods in the abstract class.<br/>
 
+
+
 # Interfaces
+
 > - Interface is a reference type, similar to a class, that can contain only abstract methods (methods without a body) and constants (public, static, and final variables).<br/> 
 > - It is a way to define a contract that other classes can implement.<br/>
 > - Interfaces are used to specify a set of methods that implementing classes must provide, without dictating how those methods should be implemented. <br/>
@@ -709,7 +786,7 @@ public interface Constants {
 }
 ```
 
-> **Multiple Inheritance:**<br/>
+> **Multiple Inheritance:** <br/>
 > - A class in Java can implement multiple interfaces. This allows a class to inherit the abstract methods from multiple interfaces, providing a form of multiple inheritance. <br/>
 
 > **Polymorphism:** <br/>
