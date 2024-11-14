@@ -2167,12 +2167,15 @@ names.stream()
 > - Pattern matching allows for simplified switch structures by avoiding manual type casting.<br/>
 > - It enables evaluating and handling different types within switch in a concise way.<br/>
 ```java
-Object obj = 123;
-String result = switch (obj) {
-    case Integer i -> "Integer: " + i;
-    case String s -> "String: " + s;
-    default -> "Unknown type";
+int mark = getStudentMark();
+String message = switch (mark) {
+    case 0, 1 -> "Null";
+    case 10 -> "Average";
+    case 20 -> "Excellent";
+    default -> "Indéfini";
 };
+
+System.out.println("Message : " + message);
 ```
 
 ### Sealed Classes
