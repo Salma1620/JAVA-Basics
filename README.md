@@ -951,6 +951,12 @@ char ch = str.charAt(0);
 String sub = str.substring(1, 4); // Extracts characters from index 1 to 3
 ```
 
+#### Split a string
+```java 
+String[] result = str.split(String regex);
+String[] result = str.split(String regex, int limit);
+```
+
 #### Concatenation
 ```java 
 String newStr = str.concat(" World");
