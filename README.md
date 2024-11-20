@@ -691,8 +691,11 @@ class Calculator {
 ### Run-Time Polymorphism (Dynamic Polymorphism)
 
 > **Method Overriding:** a subclass provides a specific implementation of a method that is already defined in its superclass.<br/>
-> The method to be called is determined at runtime based on the object's actual class.
-
+> The method to be called is determined at runtime based on the object's actual class.<br/>
+> The subclass method’s scope must be equal to or wider than the Superclass method’s overridden method’s scope.<br/>
+> Unchecked Exceptions (e.g., RuntimeException): Can be added or removed freely in the overridden method. <br/>
+> Checked Exceptions (e.g., IOException): Must be the same or more specific exception. You cannot add new checked exceptions. <br/>
+> It called also **virtual functions**
 **Example:**  Run-Time Polymorphism
 
 ```java
