@@ -87,6 +87,7 @@
     - [Process-Based Multitasking (Multiprocessing)](#Process-Based-Multitasking-(Multiprocessing))
     - [thread-Based Multitasking (Multithreading)](#thread-Based-Multitasking-(Multithreading))
       - [Life Cycle Of Thread](#Life-Cycle-Of-Thread)
+  - [Synchronisation](#Synchronisation)
 - [JDBC (Java Database Connectivity)](#JDBC (Java Database-Connectivity))
 - [Streams API](#Streams-API)
   - [Create Java Stream](#Create-Java-Stream)
@@ -1698,6 +1699,23 @@ if (ht1.containsKey("vishal")) {
 > - Termination is achieved by a Thread when it finishes its task Normally.<br/>
 > - Sometimes Threads may be terminated due to unusual events like segmentation faults, exceptions…etc. and such kind of Termination can be called Abnormal Termination.<br/>
 > - A terminated Thread means it is dead and no longer available.<br/>
+
+## Synchronisation
+Synchronization is a mechanism in Java that prevents multiple threads from accessing or modifying shared resources simultaneously. It ensures thread safety by allowing only one thread to execute a synchronized block or method at a time.
+Synchronization solves issues such as:
+
+Race conditions: Multiple threads trying to modify the same resource simultaneously.
+Data inconsistency: Ensures that threads do not access inconsistent or partially modified data.
+Deadlocks and thread interference: Minimizes conflicts and unintended behaviors in multithreading environments.
+
+Synchronization works by using locks:
+
+Object-level lock: Acquired when a thread accesses a synchronized instance method or block.
+Class-level lock: Acquired when a thread accesses a synchronized static method or block. The thread locks the class itself (ClassName.class).
+
+
+
+
 
 
 # JDBC (Java Database Connectivity)
