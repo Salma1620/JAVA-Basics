@@ -94,6 +94,8 @@
   - [Different Operations On Streams](#Different-Operations-On-Streams)
     - [Intermediate Operations](#Intermediate-Operations)
     - [Terminal operations](#Terminal-operations)
+- [Generics In Java](#Generics-In-Java)
+  - 
 - [LTS versions](#LTS-versions)
   - [Java 8](#Java-8)
   - [Java 11](#Java-11)
@@ -1931,6 +1933,65 @@ Stream<Integer> numbers = Stream.of(1, 2, 3, 4, 5);
 Integer[] array = numbers.toArray(Integer[]::new);  // Collects into an array
 System.out.println(Arrays.toString(array));  // Output: [1, 2, 3, 4, 5]
 ``` 
+
+# Generics In Java
+
+> - Generics means parameterized types. The idea is to allow a type (like Integer, String, etc., or user-defined types) to be a parameter to methods, classes, and interfaces.<br/>
+> - Using Generics, it is possible to create classes that work with different data types.<br/>
+> - An entity such as a class, interface, or method that operates on a parameterized type is a generic entity.<br/>
+> - When we declare an instance of a generic type, the type argument passed to the type parameter must be a reference type. We cannot use primitive data types like int, char. <br/>
+
+## Generic Classes
+```java
+public class Box<T> {
+    private T value;
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return value;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Using Box with Integer
+        Box<Integer> intBox = new Box<>();
+        intBox.setValue(10);
+        System.out.println("Integer Value: " + intBox.getValue());
+
+        // Using Box with String
+        Box<String> strBox = new Box<>();
+        strBox.setValue("Hello");
+        System.out.println("String Value: " + strBox.getValue());
+    }
+}
+```
+## Generic Methods
+```java
+public class Main {
+    public static <T> void printArray(T[] array) {
+        for (T element : array) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Integer[] intArray = {1, 2, 3};
+        String[] strArray = {"A", "B", "C"};
+
+        printArray(intArray); // Prints: 1 2 3
+        printArray(strArray); // Prints: A B C
+    }
+}
+```
+
+
+
+
 
 # LTS versions
 > Java Long-Term Support (LTS) versions are stable releases that Oracle and other vendors support for an extended period, making them ideal for production environments.<br/>
