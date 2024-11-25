@@ -1701,17 +1701,19 @@ if (ht1.containsKey("vishal")) {
 > - A terminated Thread means it is dead and no longer available.<br/>
 
 ## Synchronisation
-Synchronization is a mechanism in Java that prevents multiple threads from accessing or modifying shared resources simultaneously. It ensures thread safety by allowing only one thread to execute a synchronized block or method at a time.
-Synchronization solves issues such as:
+Synchronization is a mechanism in Java that prevents multiple threads from accessing or modifying shared resources simultaneously. <br/>
+It ensures thread safety by allowing only one thread to execute a synchronized block or method at a time<br/>
+**Synchronization solves issues such as:** <br/>
 
-Race conditions: Multiple threads trying to modify the same resource simultaneously.
-Data inconsistency: Ensures that threads do not access inconsistent or partially modified data.
-Deadlocks and thread interference: Minimizes conflicts and unintended behaviors in multithreading environments.
+- Race conditions: Multiple threads trying to modify the same resource simultaneously.<br/>
+- Data inconsistency: Ensures that threads do not access inconsistent or partially modified data.<br/>
+- Deadlocks and thread interference: Minimizes conflicts and unintended behaviors in multithreading environments.<br/>
 
-Synchronization works by using locks:
+**Synchronization works by using locks:** <br/>
 
-Object-level lock: Acquired when a thread accesses a synchronized instance method or block.
-Class-level lock: Acquired when a thread accesses a synchronized static method or block. The thread locks the class itself (ClassName.class).
+- Object-level lock: Acquired when a thread accesses a synchronized instance method or block. <br/>
+- Class-level lock: Acquired by synchronizing instance methods or blocks. It locks only the specific instance being accessed.<br/>
+
 
 
 
