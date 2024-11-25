@@ -1954,7 +1954,7 @@ interface MyInterface {
 
 **Example : Lambda Expression**
 ```Java
-// Before Java 8
+// Before Java 8 With Anonymous Class:
 public class BeforeJava8Example {
     public static void main(String[] args) {
         MyInterface implementation = new MyInterface() {
