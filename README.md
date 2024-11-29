@@ -539,6 +539,7 @@ public class Main {
 
 ### Method Overriding 
 > -  A subclass can provide a specific implementation for a method that is already defined in its superclass. This is known as method overriding. <br/>
+> - Private methods can't be overriden <br/>
 > - The `@Override` annotation is often used to indicate that a method is being overridden. <br/>
 
 **Example:** Metod Overriding
@@ -572,6 +573,8 @@ class Dog extends Animal {
 #### Covariant Return Types
 > - covariant return types allow a method in a subclass to override a method in its superclass and return a more specific type (a subtype) than the return type specified by the superclass method. <br/>
 > - This feature was introduced in Java 5 to provide more flexibility in method overriding.<br/>
+> - We can also change the access modifier of the method overrriden in the subclass, in one condition : increase the access <br/>
+
 **Example:**
 ```java
 class Animal {
@@ -608,6 +611,7 @@ Dog myDog = new Dog();
 myDog.makeSound(); //output : Animal makes a sound
 ```
 
+if the superclass method declares a general exception (e.g., Exception), the subclass method can declare a more specific exception (e.g., IOException).
 ### Super keyword
 > In Java, the super keyword is used to refer to members (methods, constructors, and instance variables) of the superclass (parent class) from within a subclass (child class). <br/>
 > It allows the subclass to access and override features from its parent class while retaining the ability to refer to the original versions.
