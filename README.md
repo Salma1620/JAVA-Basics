@@ -1709,19 +1709,70 @@ if (ht1.containsKey("vishal")) {
 ## Synchronisation
 Synchronization is a mechanism in Java that prevents multiple threads from accessing or modifying shared resources simultaneously. <br/>
 It ensures thread safety by allowing only one thread to execute a synchronized block or method at a time<br/>
-**Synchronization solves issues such as:** <br/>
 
+**Synchronization solves issues such as:** <br/>
 - Race conditions: Multiple threads trying to modify the same resource simultaneously.<br/>
 - Data inconsistency: Ensures that threads do not access inconsistent or partially modified data.<br/>
 - Deadlocks and thread interference: Minimizes conflicts and unintended behaviors in multithreading environments.<br/>
 
-**Synchronization works by using locks:** <br/>
+### Synchronization works by using locks:** <br/>
 
-- Object-level lock: Acquired when a thread accesses a synchronized instance method or block. <br/>
-- Class-level lock: Acquired by synchronizing instance methods or blocks. It locks only the specific instance being accessed.<br/>
+#### Object-level lock: 
+When you synchronize an instance method, the lock is acquired on the particular object instance for which the method is invoked. <br/>
+```java
+class Counter {
+    private int count = 0;
+
+    // Synchronized instance method
+    public synchronized void increment() {
+        count++;
+    }
+}
+// Here, the increment() method is synchronized at the instance level. 
+// This means when thread A calls the increment() method on a Counter object, thread B must wait until thread A finishes before it can call the increment() method on the same Counter instance.
+```
+
+#### Class-level lock: 
+Acquired by synchronizing instance methods or blocks. It locks only the specific instance being accessed.<br/>
+```java
+class Counter {
+    private static int count = 0;
+
+    // Synchronized static method
+    public synchronized static void increment() {
+        count++;
+    }
+}
+// In this case, the increment() method is synchronized at the class level.
+// No matter which object of type Counter calls this method, the lock is applied to the class Counter itself.
+// This means all threads must wait for access to this static method.
+```
 
 
+### Method-level synchronization:
+> - You can synchronize an entire method by adding the synchronized keyword to the method signature. <br/>
+> - This ensures that only one thread can execute the method at any given time, and other threads trying to access it will be blocked until the method is available.<br/>
 
+```java
+public synchronized void exampleMethod() {
+    // Code that needs synchronization
+}
+```
+
+### Block-level synchronization:
+> You can synchronize a specific block of code within a method using the synchronized keyword and a specific object. This provides finer control over which part of the code needs synchronization, rather than synchronizing the entire method. <br/>
+
+```java
+public void exampleMethod() {
+    // Code that doesn't need synchronization
+    
+    synchronized (this) {
+        // Code that needs synchronization
+    }
+
+    // More code
+}
+```
 
 
 
