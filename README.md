@@ -2342,3 +2342,185 @@ System.out.println(message);  // Output: Hello, I am 21 years old.
 
 
 
+
+
+
+
+# Confusion
+
+```java
+class X {
+    public static int f(int x) {
+        return (x + 10);
+    }
+
+    public int g(int x) {
+        return (x * 2);
+    }
+}
+```
+
+```java
+class Y extends X {
+    public static int f(int x) {
+        return (x + 20);
+    }
+
+    public int g(int x) {
+        return (x * 3);
+    }
+}
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        X x = new Y();
+        System.out.println(x.f(5) + x.g(4));
+    }
+}
+```
+La référence x est de type X, mais l'objet réel est de type Y.<br/>
+La méthode f est static, donc x.f(5) appelle la méthode X.f: 5+10=15<br/>
+La méthode g est non-static, donc x.g(4) appelle la méthode Y.g: 4×3=12<br/>
+
+```java
+class Base {
+    public static void show() {
+        System.out.println("Base show");
+    }
+}
+
+class Derived extends Base {
+    public void show() {  // COMPILE ERROR HERE
+        System.out.println("Derived show");
+    }
+}
+```
+
+```java
+class Base {
+    public void show() {
+        System.out.println("Base show");
+    }
+}
+
+class Derived extends Base {
+    public static void show() {  
+        System.out.println("Derived show");
+    }
+}
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Base base = new Base();
+        base.show();  // Appelle la méthode d'instance de Base : "Base show"
+
+        Derived derived = new Derived();
+        derived.show();  // Appelle la méthode statique de Derived : "Derived show"
+
+        Base polymorphic = new Derived();
+        polymorphic.show();  // Appelle la méthode d'instance de Base : "Base show"
+
+        Derived.show();  // Appelle la méthode statique de Derived : "Derived show"
+    }
+}
+```
+
+```java
+class A {
+    A() {
+        System.out.println("A's constructor");
+
+    }
+}
+
+class B extends A {
+    B() {
+        System.out.println("B's constructor");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        B b = new B();
+    }
+}
+```
+**Result**
+```java
+A's constructor
+B's constructor
+```
+
+Le constructeur de la classe parente (A) est toujours appelé avant le constructeur de la classe enfant (B).<br/>
+Cela se produit même si le constructeur parent n'est pas explicitement appelé grâce au mot-clé super.<br/>
+**Les cas possibles :**<br/>
+> lorsqu'un objet d'une classe fille est instancié, le constructeur de la classe mère est toujours appelé avant celui de la classe fille. <br/>
+
+> - la classe mere et la classe fille n'ont pas des definitions des constructeurs -> le compilateur va utiliser les constructeurs par defaut<br/>
+> - la classe mere et la classe fille ont des definitions des constructeurs sans arguments -> le compilateur va utiliser e constructeurs sans arguments defini dans la classe mere sans la peine de l'appeler explicitement dans le constructeur de la classe fille<br/>
+> - la classe mere a juste un constructeur avec argument -> la classe fille doit definir le construteur(soit avec ou sans argument) et faire appeler le constructeur avec argument de la classe mere car le constructeur ne va pas trouver un contructeur sans arg de la classe mere<br/>
+> - la classe mere a deux constructeurs sans et avec argument -> la classe fille peut(ou pas) definir le construteur(soit avec ou sans argument) et soit faire appeler le constructeur avec argument de la classe mere soit non car il va trouver le constructeur sans argument pour l'utiliser<br/>
+
+
+
+
+
+```java
+class Parent {
+    public int x = 10;
+}
+
+class Child extends Parent {
+    public int x = 20;
+}
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Parent obj = new Child();
+        System.out.println(obj.x); // Quelle valeur sera affichée ?
+    }
+}
+```
+**Result** 10<br/>
+Les variables ne sont pas polymorphiques. La valeur de x affichée dépend du type de référence, pas de l'objet réel.<br/>
+Ici, obj.x fait référence à Parent.x.<br/>
+Le type de la référence obj est Parent, donc l'accès à x se fait en utilisant la variable définie dans la classe Parent, même si l'objet réel est une instance de Child.<br/>
+Le polymorphisme ne s'applique pas aux variables d'instance ; il ne s'applique qu'aux méthodes.<br/>
+
+
+```java
+class Parent {
+    public int x = 10;
+
+    public int getX() {
+        return x;
+    }
+}
+
+class Child extends Parent {
+    public int x = 20;
+
+    @Override
+    public int getX() {
+        return x;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Parent obj = new Child();
+        System.out.println(obj.x);       // Affiche : 10
+        System.out.println(obj.getX()); // Affiche : 20
+    }
+}
+```
+
+
+
+
