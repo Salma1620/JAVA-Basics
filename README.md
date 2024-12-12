@@ -855,6 +855,36 @@ public class Main {
 > Sometimes, the built-in exceptions in Java are not able to describe a certain situation.<br/>
 > In such cases, users can also create exceptions, which are called ‘user-defined Exceptions’. <br/>
 
+```java
+// Exception personnalisée
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+```
+
+```java
+public class Main {
+    public static void validateAge(int age) throws InvalidAgeException {
+        if (age < 18) {
+            throw new InvalidAgeException("Âge non valide : Vous devez avoir au moins 18 ans.");
+        } else {
+            System.out.println("Âge valide !");
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            validateAge(16); // Provoque l'exception
+        } catch (InvalidAgeException e) {
+            System.out.println("Exception capturée : " + e.getMessage());
+        }
+    }
+}
+```
+
+
 
 ## Java try and catch
 > - The `try` statement allows you to define a block of code to be tested for errors while it is being executed.<br/>
