@@ -4,7 +4,7 @@
 - [History](#History)
 - [Java jvm-jre-jdk](#Java-JDK-JRE-JVM)
 - [How to run java code](#How-to-run-java-code)
-- [Basics](#Basics)
+- [Basics](#Basifcs)
   - [Data types in Java](#Data-types-in-Java)
   - [Wrapper Classes in Java](#Wrapper-Classes-in-Java)
     - [Autoboxing and Unboxing](#Autoboxing-and-Unboxing)
@@ -1803,7 +1803,10 @@ public void exampleMethod() {
     // More code
 }
 ```
-
+## ReentrantLock
+Le ReentrantLock est une classe fournie par Java dans le package java.util.concurrent.locks qui permet un contrôle plus précis sur la synchronisation des threads par rapport au mot-clé synchronized.<br/>
+si un thread possède déjà le verrou, il peut de nouveau l'acquérir sans attendre, et il doit libérer le verrou le même nombre de fois qu'il l'a acquis.<br/>
+Cela diffère du verrou implicite (via synchronized), où un thread ne peut entrer à nouveau dans une section de code synchronisée qu'après avoir libéré le verrou.<br/>
 
 
 
