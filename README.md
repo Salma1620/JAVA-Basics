@@ -2555,5 +2555,91 @@ public class Main {
 ```
 
 
+## POO vs Programmation fonctionnelle
 
+La programmation fonctionnelle est un paradigme de programmation qui met l'accent sur l'utilisation de fonctions pures et sur le traitement des données immuables.
+
+### POO :
+Se concentre sur les objets et les méthodes qui agissent sur ces objets.
+Utilise des concepts comme l'héritage, l'encapsulation et le polymorphisme.
+Les données peuvent être modifiées à l'intérieur des objets.
+
+### Programmation Fonctionnelle :
+Se concentre sur les fonctions pures et l'immuabilité.
+Les données ne sont pas modifiées. Les fonctions sont indépendantes des objets.
+
+
+
+### Exemple de Programmation Fonctionnelle en Java (Streams et Lambdas) :
+
+Avec Java 7 et avant (sans programmation fonctionnelle) :
+```java
+int sum = 0;
+for (int num : numbers) {
+    if (num % 2 == 0) {
+        sum += num * num;
+    }
+}
+System.out.println(sum);
+```
+
+Avec Java 8 et la programmation fonctionnelle (en utilisant Streams et Lambdas) :
+```java
+int sum = numbers.stream()
+                 .filter(n -> n % 2 == 0)  // Garde les nombres pairs
+                 .map(n -> n * n)           // Prend les carrés des nombres
+                 .reduce(0, Integer::sum);  // Somme des carrés
+System.out.println(sum);
+```
+
+## volative vs synchronized
+
+### 1. Le mot-clé volatile 
+Définition :
+Le mot-clé volatile est utilisé pour indiquer qu'une variable peut être modifiée par plusieurs threads simultanément.
+Lorsqu'une variable est marquée volatile, elle est lue et écrite directement dans la mémoire principale (main memory), plutôt que dans le cache du thread.
+
+Objectif :
+Garantir que tous les threads voient toujours la valeur la plus récente de cette variable.
+
+Limite :
+Il ne garantit pas l'exclusion mutuelle (pas de blocage). Si deux threads écrivent en même temps, un problème de condition de course (race condition) peut survenir.
+
+
+class VolatileExample extends Thread {
+    private volatile boolean running = true;
+
+    public void run() {
+        while (running) {
+            System.out.println("Thread en cours...");
+        }
+        System.out.println("Thread arrêté.");
+    }
+
+    public void stopThread() {
+        running = false; // Met à jour la variable dans la mémoire principale
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        VolatileExample thread = new VolatileExample();
+        thread.start();
+
+        Thread.sleep(2000); // Laisser le thread tourner un moment et faire dormir le thread main principal
+        thread.stopThread(); // apres 2 secondes, le thread main va continuer son execution et va executer ctte ligne et Arrêter le thread
+    }
+}
+
+**Pourquoi ça marche grâce à volatile ?** <br/>
+Dans un contexte multithread :
+
+Avec volatile, toute modification de la variable est immédiatement visible dans la mémoire principale (main memory). 
+Cela garantit que tous les threads ont accès à la valeur la plus récente.
+
+Si on enlève volatile, il est possible que :
+
+Le thread principal modifie running à false dans la mémoire principale.
+Mais le thread en cours continue d'utiliser une version mise en cache de running, qui est encore true.
+Résultat : La boucle peut ne jamais se terminer, et "Thread arrêté." ne sera jamais affiché.
 
