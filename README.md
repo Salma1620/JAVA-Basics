@@ -2439,28 +2439,13 @@ class Base {
 }
 
 class Derived extends Base {
-    public static void show() {  
+    public static void show() {   // COMPILE ERROR HERE
         System.out.println("Derived show");
     }
 }
 ```
 
-```java
-public class Main {
-    public static void main(String[] args) {
-        Base base = new Base();
-        base.show();  // Appelle la méthode d'instance de Base : "Base show"
 
-        Derived derived = new Derived();
-        derived.show();  // Appelle la méthode statique de Derived : "Derived show"
-
-        Base polymorphic = new Derived();
-        polymorphic.show();  // Appelle la méthode d'instance de Base : "Base show"
-
-        Derived.show();  // Appelle la méthode statique de Derived : "Derived show"
-    }
-}
-```
 
 ```java
 class A {
